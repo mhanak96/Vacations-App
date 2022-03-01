@@ -1,0 +1,22 @@
+/*status colors */ 
+.sacc{
+	color: #1a8a54;
+  font-weight: bold;
+}
+
+.slea{
+	color: #7d188c;
+  font-weight: bold;
+}
+
+.swai{
+	color: #8a8c18;
+  font-weight: bold;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.sref{
+	color: #8c1818;
+  font-weight: bold;
+}

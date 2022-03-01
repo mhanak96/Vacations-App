@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Panel Kadr</title>
+    <meta name="description" content="Panel Kadr" />
+    <meta name="keywords" content="Panel, Kadry" />
+
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <link rel="stylesheet" href="fontello-2881fecc/css/tw.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@400;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div id="nav">
+      <div id="logo">Logo</div>
+      <div class="name">Baza pracowników</div>
+      <div class="nav-btn">
+        <button class="btn1">
+          <a class="nav-link" href="./kadry.html">Panel głowny</a>
+        </button>
+        <button class="btn1">Wyloguj</button>
+      </div>
+    </div>
+    <div class="box">
+      <div class="info">Pracownicy:</div>
+      <div id="application">
+        <div>
+          <button class="btn3">Dodaj pracownika</button>
+        </div>
+      </div>
+      <div class="tab">
+        <table>
+          <tr>
+            <th>ID</th>
+            <th>Imie</th>
+            <th>Nazwisko</th>
+            <th>Stanowisko</th>
+            <th>Rodzaj umowy</th>
+            <th>Data rozpoczęcia pracy</th>
+            <th>Ilość dni nieobecnych</th>
+            <th>Opcje</th>
+          </tr>
+          <tr>
+            <td>${nr}</td>
+            <td>${Imie}</td>
+            <td>${Nazwisko}</td>
+            <td>${Kierownik}</td>
+            <td>${Umowa}</td>
+            <td>${Data}</td>
+            <td>${Nieobecnosc}</td>
+            <td><a href="#">Edytuj / Usuń</a></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <!---------------------------okno----------------------------->
+    <div class="modal2">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1>Nowy pracownik</h1>
+        </div>
+        <div class="inputs">
+          <label for="name">Imie</label>
+          <input class="form-control" type="text" name="name" id="name" />
+          <label for="">Naziwsko</label>
+          <input
+            class="form-control"
+            type="text"
+            name="naziwsko"
+            id="naziwsko"
+          />
+          <label for="">Stanowisko</label>
+          <input
+            class="form-control"
+            type="text"
+            name="stanowisko"
+            id="stanowisko"
+          />
+          <label for="">Data rozpoczęcia pracy</label>
+          <input class="form-control" type="date" name="data" id="data" />
+          <label for="">Rodzaj umowy</label>
+          <select name="umowa" id="umowa">
+            <option value="zlecenie">Umowa zlecenie</option>
+            <option value="probny">Na okres probny</option>
+            <option value="praca">Umowa o pracę</option>
+            <option value="zastepstwo">Umowa na zastępstwo</option>
+            <option value="staz">Staż/Praktyki</option>
+          </select>
+        </div>
+        <div class="modal-footer">
+          <button class="submit-btn1">Dodaj</button>
+          <button id="close2" class="close-btn2">Zamknij</button>
+        </div>
+      </div>
+    </div>
+    <script src="window.js"></script>
+  </body>
+</html>
