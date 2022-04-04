@@ -49,13 +49,17 @@ if(!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != '
             <div id="box">
                 <div class="info" >Panel Kierownika</div>
                 <div id="dashboard">
-                    <div class="panelBox" ><i class="icon-user"></i>
-                    <span id="panel-name">${firstName} ${lastName}</span>
-                    </div>
-                    <div class="panelBox"><i class="icon-bat2"></i><span id="vacation-left">${vacationDaysLeft} </span>
-                    </div>
-                    <div class="panelBox"><i class="icon-help"></i><span id="vacation-used">${vacationTotal} </span>
-                    </div>
+                <div class="panelBox" ><i class="icon-user"></i>
+                <span id="panel-name">${firstName} ${lastName}</span>
+                </div>
+                <div class="panelBox"><i class="icon-user"></i>
+                <span id="panel-position">${position}</span>
+                </div>
+                <div class="panelBox"><i class="icon-bat2"></i>
+                <span id="vacation-left">${vacationDaysLeft}</span>
+                </div>
+                <div class="panelBox"><i class="icon-help"></i>
+                <span id="vacation-used">${vacationsTotal}</span>
                 </div>
             </div> 
 
@@ -89,7 +93,6 @@ if(!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != '
                 <div>
                     <div id="application">                  
                         <div class="hist">Historia wniosków:</div>
-                        <button id="modal-btn2" class="btn2">Lista obecności</button>
                     </div>
                     <div id="tab">
                         <table>
@@ -110,7 +113,7 @@ if(!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != '
                 </div>                      
             </div>
 <!--okno-->
-                <div class="modal">
+                    <div class="modal">
                     <div class="modal-content">
                         <div class="modal-header">
                         <h1>Nowy wniosek urlopowy</h1>
@@ -129,17 +132,13 @@ if(!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != '
                             <label for="">Wybierz datę:</label><input type="text" id="daterangepicker" name="date-picker" class="form-control">
                             <label>Zastępstwo:</label>
                             <select name="deputy" id="deputy">
-                                <option value="w1">Zwykły</option>
-                                <option value="w2">Na żądanie</option>
-                                <option value="w3">L4</option>
+                              
                             </select>
                             <label for="">Ewentualny komentarz:</label><textarea name="comment" id="comment" cols="30" rows="10"></textarea>
                         </div>
                         <div class="modal-footer">
-                            <input type="button" id="submit-request" class="submit-btn1" value="Wyślij wniosek"></input>
-                            <div class="alert hidden" id="alert">
+                        <input type="button" id="submit-request" class="submit-btn1" value="Wyślij wniosek"></input>
 					            <label id="error">....</label>
-				            </div>
                         </div>
                         </form>
                         <button  id="close" class="close-btn">Zamknij</button>
@@ -164,6 +163,55 @@ if(!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != '
                         </div>
                     </div>
                 </div>
+
+                <div class="modal3 smodal hidden">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h1 class="pet-tittle">Ocena wniosku <span id="number">${number}</span></h1>
+                        </div>
+                        <form>
+                        <div>
+                        <label id="modal3-name">Imię i Nazwisko: <span>...</span></label>
+                        </div>
+                        <div>
+                        <label>Okres czasu: <span id="modal3-time">...</span></label>
+                        </div>
+                        <div>
+                        <label>Zastępuje:<span id="modal3-deputy">...</span></label>
+                        </div>
+                        <div>
+                        <label>Typ urlopu:<span id="modal3-type">...</span></label>
+                        </div>
+                        <div class="modal-footer">
+                        <input type="submit" id="btn-accept" id="submit-request" class="submit-btn1" value="Zaakceptuj"></input>    
+                        </form>
+                        <form>
+                        <button id="btn-decline" class="close-btn cl2">Odrzuć</button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="modal4 smodal hidden">
+                <div class="modal-content">
+                        <div class="modal-header">
+                        <h1 class="pet-tittle">Informacje o wniosku <span id="number2">${number}</span></h1>
+                        </div>
+                        <div>
+                        <label id="modal4-name">Imię i Nazwisko: <span>...</span></label>
+                        </div>
+                        <div>
+                        <label>Okres czasu: <span id="modal4-time">...</span></label>
+                        </div>
+                        <div>
+                        <label>Zastępuje:<span id="modal4-deputy">...</span></label>
+                        </div>
+                        <div>
+                        <label>Typ urlopu:<span id="modal4-type">...</span></label>
+                        </div>
+                    </div>
+                </div>
+
 
               
         
@@ -198,6 +246,13 @@ if(!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != '
      
 
 
+    $sel_collegues = mysqli_query($connection, "SELECT first_name FROM `vacation_data` WHERE departament like '%Produkcja%' AND NOT id like $id") or exit(mysqli_error($connection));
+
+    $name_collegues  = mysqli_fetch_all($sel_collegues, MYSQLI_NUM);
+
+    $collegues_join = array_merge(...$name_collegues); 
+
+
     /*$toTable = mysqli_fetch_array($select, MYSQLI_NUM);
      $solutions = array();
 
@@ -216,6 +271,7 @@ if(!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != '
      var tableWorkers = <?php echo json_encode($vac_workers);?>;
      var tableWorkersSecond = <?php echo json_encode($arr);?>;
      var tableWorkersThird = <?php echo json_encode($vac_workers_history);?>;
+    var collegues = <?php echo json_encode($collegues_join);?>;
      </script>
 
     <script type="text/javascript" src="kierownik.js"></script>

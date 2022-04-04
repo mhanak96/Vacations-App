@@ -109,7 +109,7 @@ if(!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != '
                         <h1>Nowy wniosek urlopowy</h1>
                         </div>
                         <!-- FORM-->
-                        <form class="request-form" action="../holiday-request.php" method="post">
+                        <form class="request-form" action="../holiday-request-worker.php" method="post">
                         <div class="inputs">
                             <label>Typ urlopu:</label>
                             <select name="vacation" id="vacation">
@@ -122,14 +122,12 @@ if(!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != '
                             <label for="">Wybierz datę:</label><input type="text" id="daterangepicker" name="date-picker" class="form-control">
                             <label>Zastępstwo:</label>
                             <select name="deputy" id="deputy">
-                                <option value="w1">Zwykły</option>
-                                <option value="w2">Na żądanie</option>
-                                <option value="w3">L4</option>
+                              
                             </select>
                             <label for="">Ewentualny komentarz:</label><textarea name="comment" id="comment" cols="30" rows="10"></textarea>
                         </div>
                         <div class="modal-footer">
-                            <input type="button" id="submit-request" class="submit-btn1" value="Wyślij wniosek"></input>
+                        <input type="button" id="submit-request" class="submit-btn1" value="Wyślij wniosek"></input>
                             <div class="alert hidden" id="alert">
 					            <label id="error">....</label>
 				            </div>
@@ -183,6 +181,7 @@ if(!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != '
     <?php
 
         $id = $_SESSION['session_data']['0'];
+      
 
 
         $connection = mysqli_connect('localhost','root','','application');
@@ -191,7 +190,7 @@ if(!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != '
 
         $vac_history = mysqli_fetch_all($sel_vac_history, MYSQLI_ASSOC);
 
-        $sel_collegues = mysqli_query($connection, "SELECT first_name, second_name FROM `vacation_data` WHERE departament like '%Produkcja%' AND NOT id like '2'") or exit(mysqli_error($connection));
+        $sel_collegues = mysqli_query($connection, "SELECT first_name FROM `vacation_data` WHERE departament like '%Produkcja%' AND NOT id like $id") or exit(mysqli_error($connection));
 
         $name_collegues  = mysqli_fetch_all($sel_collegues, MYSQLI_NUM);
 

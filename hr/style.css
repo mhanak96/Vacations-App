@@ -176,6 +176,7 @@ th {
 
 /*okno*/
 
+
 .modal {
   display: none;
   position: fixed;
@@ -256,8 +257,17 @@ th {
   bottom: 0;
 }
 
+.submit-btn1:disabled {
+  background-color: #5d6466;
+}
+
 .submit-btn1:hover {
   background-color: #379bb9;
+}
+
+
+.hidden {
+  display: none;
 }
 
 @-webkit-keyframes animatetop {
@@ -307,3 +317,14 @@ select {
 ol {
   font-size: 2rem;
 }
+
+.smodal {
+  position: fixed;
+  padding-top: 50px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.5);
+} 

@@ -6,15 +6,20 @@ const button = document.getElementById('submit-request');
 
 
 button.addEventListener('click', function(){
+
+  
+
     document.getElementById('alert').classList.add('hidden');
     $.ajax({
         type: "POST",
-        url: "../holiday-request.php",
+        url: "holiday-request-worker.php",
         data: {
             vacation: document.getElementById('vacation').value,
             datepicker: document.getElementById('daterangepicker').value,
             deputy: document.getElementById('deputy').value,
-            comment: document.getElementById('comment').value
+            comment: document.getElementById('comment').value,
+            vacTotal: correctResult,
+            vacOn: result
         }
     })
     .done(function (msg) {
@@ -37,7 +42,8 @@ button.addEventListener('click', function(){
         }
         
         
-       
+        window.location.reload(false);
+        //window.location.replace("http://localhost/vacations/employee/employee.php");
         //document.forms["form-login"].submit();
     });
 });

@@ -6,7 +6,6 @@ const button = document.getElementById('submit-request');
 
 
 button.addEventListener('click', function(){
-    document.getElementById('alert').classList.add('hidden');
     $.ajax({
         type: "POST",
         url: "../holiday-request.php",
@@ -14,11 +13,12 @@ button.addEventListener('click', function(){
             vacation: document.getElementById('vacation').value,
             datepicker: document.getElementById('daterangepicker').value,
             deputy: document.getElementById('deputy').value,
-            comment: document.getElementById('comment').value
+            comment: document.getElementById('comment').value,
+            vacTotal: correctResult,
+            vacOn: result
         }
     })
     .done(function (msg) {
-        alert("Data Saved: " + msg);
         switch(msg){
             case "correct":
                 document.forms["request-form"].submit();

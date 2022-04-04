@@ -4,6 +4,9 @@ const windowsClose = document.querySelector(".close-btn");
 const modal = document.querySelector(".modal");
 const modal2 = document.querySelector(".modal2");
 
+
+const appButton = document.getElementById("submit-request");
+
 function open(e) {
   e.target.id === "modal-btn"
     ? (modal.style.display = "block")
@@ -24,6 +27,22 @@ windowsBtn2.addEventListener("click", open);
 
 
 //-------- datapicker-------------
+
+function countDays(start, end){
+  let vacationStart = new Date(start);
+  let vacationEnd = new Date(end);  
+  let calcDays = vacationEnd.getTime() - vacationStart.getTime();
+
+  var daysTotal = Math.ceil(calcDays / (1000 * 3600 * 24));
+  console.log(daysTotal + ' dni urlopu');
+
+ 
+  return(daysTotal);
+
+}
+
+var result;
+var correctResult;
 
 $("#daterangepicker").daterangepicker(
   {
@@ -61,8 +80,29 @@ $("#daterangepicker").daterangepicker(
     endDate: "01/10/2022",
   },
   function (start, end, label) {
-    console.log(
-      "New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')"
-    );
+    vac_start =  new Date(start);
+    vac_end = new Date(end); 
+
+    out(start, end, label);
   }
 );
+
+function out(start, end, label){
+  result = countDays(start, end);
+  if(result > workerData[7]){
+    errorInfo.textContent = `Błąd! Masz tylko ${workerData[7]} dni urlopu. Zaznacz inny zakres dat!`;
+
+  
+    document.getElementById("submit-request").setAttribute('disabled', true);
+  }
+  else
+  {
+    correctResult = workerData[7] - result; 
+
+    workerData[7] = correctResult;
+    workerData[8] += result;
+
+    errorInfo.textContent = `Dostępne dni urlopu po złożeniu wniosku: ${correctResult}`;   
+    document.getElementById("submit-request").removeAttribute("disabled");
+  }
+};

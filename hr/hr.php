@@ -66,14 +66,18 @@ if(!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != '
       <div class="box">
         <div class="info">Panel kadrowy</div>
         <div id="dashboard">
-          <div class="panelBox">
-            <i class="icon-user" id="panel-name"></i>
-          </div>
-          <div class="panelBox">
-            <i class="icon-bat2" id="vacation-left"></i>
-          </div>
-          <div class="panelBox" id="vacation-used"><i class="icon-help"></i>${vacationsTotal}</div>
-        </div>
+                <div class="panelBox" ><i class="icon-user"></i>
+                <span id="panel-name">${firstName} ${lastName}</span>
+                </div>
+                <div class="panelBox"><i class="icon-user"></i>
+                <span id="panel-position">${position}</span>
+                </div>
+                <div class="panelBox"><i class="icon-bat2"></i>
+                <span id="vacation-left">${vacationDaysLeft}</span>
+                </div>
+                <div class="panelBox"><i class="icon-help"></i>
+                <span id="vacation-used">${vacationsTotal}</span>
+                </div>
       </div>
 
       <div class="box">
@@ -132,13 +136,13 @@ if(!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != '
       </div>
     </div>
     <!--okno-->
-    <div class="modal">
-      <div class="modal-content">
-       <div class="modal-header">
-          <h1>Nowy wniosek urlopowy</h1>
-        </div>
-        <!-- FORM-->
-        <form class="request-form" action="../holiday-request.php" method="post">
+                  <div class="modal">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h1>Nowy wniosek urlopowy</h1>
+                        </div>
+                        <!-- FORM-->
+                        <form class="request-form" action="../holiday-request.php" method="post">
                         <div class="inputs">
                             <label>Typ urlopu:</label>
                             <select name="vacation" id="vacation">
@@ -151,27 +155,91 @@ if(!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != '
                             <label for="">Wybierz datę:</label><input type="text" id="daterangepicker" name="date-picker" class="form-control">
                             <label>Zastępstwo:</label>
                             <select name="deputy" id="deputy">
-                                <option value="w1">Zwykły</option>
-                                <option value="w2">Na żądanie</option>
-                                <option value="w3">L4</option>
+                              
                             </select>
                             <label for="">Ewentualny komentarz:</label><textarea name="comment" id="comment" cols="30" rows="10"></textarea>
                         </div>
                         <div class="modal-footer">
-                            <input type="button" id="submit-request" class="submit-btn1" value="Wyślij wniosek"></input>
-                            <div class="alert hidden" id="alert">
+                        <input type="button" id="submit-request" class="submit-btn1" value="Wyślij wniosek"></input>
 					            <label id="error">....</label>
-				            </div>
                         </div>
                         </form>
-            <button  id="close" class="close-btn">Zamknij</button>
-      </div>
-    </div>
+                        <button  id="close" class="close-btn">Zamknij</button>
+                    </div>
+                </div>
+
+                <div class="modal2">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h1>Lista osob pracujacych</h1>
+                        </div>
+                        <ol>
+                            <li>Janusz</li>
+                            <li>Janusz</li>
+                            <li>Janusz</li>
+                            <li>Janusz</li>
+                            <li>Janusz</li>
+                        </ol>
+                        <div class="modal-footer">
+                            <button id="close1" class="close-btn">Zamknij</button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="modal3 smodal hidden">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h1 class="pet-tittle">Ocena wniosku <span id="number">${number}</span></h1>
+                        </div>
+                        <!-- <form> -->
+                        <div>
+                        <label id="modal3-name">Imię i Nazwisko: <span>...</span></label>
+                        </div>
+                        <div>
+                        <label>Okres czasu: <span id="modal3-time">...</span></label>
+                        </div>
+                        <div>
+                        <label>Zastępuje:<span id="modal3-deputy">...</span></label>
+                        </div>
+                        <div>
+                        <label>Typ urlopu:<span id="modal3-type">...</span></label>
+                        </div>
+                        <div class="modal-footer">
+                        <input type="submit" id="btn-accept" id="submit-request" class="submit-btn1" value="Zaakceptuj"></input>    
+                        <!-- </form> -->
+                        <!-- <form  action="decision-decline.php" method="post"> -->
+                        <button id="btn-decline" class="close-btn cl2">Odrzuć</button>
+                        </div>
+                        <!-- </form> -->
+                    </div>
+                </div>
+
+                <div class="modal4 smodal hidden">
+                <div class="modal-content">
+                        <div class="modal-header">
+                        <h1 class="pet-tittle">Informacje o wniosku <span id="number2">${number}</span></h1>
+                        </div>
+                        <div>
+                        <label id="modal4-name">Imię i Nazwisko: <span>...</span></label>
+                        </div>
+                        <div>
+                        <label>Okres czasu: <span id="modal4-time">...</span></label>
+                        </div>
+                        <div>
+                        <label>Zastępuje:<span id="modal4-deputy">...</span></label>
+                        </div>
+                        <div>
+                        <label>Typ urlopu:<span id="modal4-type">...</span></label>
+                        </div>
+                    </div>
+                </div>
+
     <script src="windowhr.js"></script>
 
     <?php
 
-$id = $_SESSION['session_data']['0'];
+    $id = $_SESSION['session_data']['0'];
 
 
       $connection = mysqli_connect('localhost','root','','application');
@@ -191,9 +259,19 @@ $id = $_SESSION['session_data']['0'];
       $arr = implode(",", $workers_join);
 
 
-      $sel_workers_applications = mysqli_query($connection, "SELECT * FROM `vacation_log` WHERE status LIKE '%Oczekuje na akceptacje HR%' AND NOT id like '$id'") or exit(mysqli_error($connection));
+      $sel_workers_applications = mysqli_query($connection, "SELECT * FROM `vacation_log` WHERE id NOT like '$id';") or exit(mysqli_error($connection));
 
+     
+
+      // STARE!!!: $sel_workers_applications = mysqli_query($connection, "SELECT * FROM `vacation_log` WHERE status LIKE '%Oczekuje na akceptacje HR%' AND NOT id like '$id'") or exit(mysqli_error($connection));
+      
       $workers_applications = mysqli_fetch_all( $sel_workers_applications, MYSQLI_NUM);
+
+      $sel_collegues = mysqli_query($connection, "SELECT first_name FROM `vacation_data` WHERE departament like '%HR%' AND NOT id like $id") or exit(mysqli_error($connection));
+
+      $name_collegues  = mysqli_fetch_all($sel_collegues, MYSQLI_NUM);
+
+      $collegues_join = array_merge(...$name_collegues); 
 
     ?>
 
@@ -201,6 +279,7 @@ $id = $_SESSION['session_data']['0'];
         var hrData = <?php echo json_encode($_SESSION['session_data']);?>;
         var table = <?php echo json_encode($vac_history);?>;
         var workersApp = <?php echo json_encode($workers_applications);?>;
+        var collegues = <?php echo json_encode($collegues_join);?>;
       </script>
       <script type="text/javascript" src="hrscript.js"></script>
       <script type="text/javascript" src="../jquery.js"></script>

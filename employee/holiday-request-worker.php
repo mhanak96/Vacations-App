@@ -21,6 +21,7 @@ $comment = $_POST['comment'];
 $vacTotal = $_POST['vacTotal'];
 $vacOn = $_POST['vacOn'];
 
+
 // $type = $_POST['vacation'];
 // $datePicker = $_POST['date-picker'];
 // $deputy = $_POST['deputy'];
@@ -56,16 +57,17 @@ $connection = mysqli_connect('localhost','root','','application');
 
 
 
-$querry = "INSERT INTO vacation_log (id, user, type, start_date, end_date, replacement, comment, status) VALUES ('$id', '$user', '$type', '$date_start', '$date_end', '$deputy', '$comment', 'Oczekuje na akceptacje HR')";
+$querry = "INSERT INTO vacation_log (id, user, type, start_date, end_date, replacement, comment, status) VALUES ('$id', '$user', '$type', '$date_start', '$date_end', '$deputy', '$comment', 'Oczekuje na akceptacje')";
 
 $update_total = mysqli_query($connection, "UPDATE `vacation_data` SET vacation_total = $vacTotal WHERE id=$id") or exit(mysqli_error($connection));
 $update_on = mysqli_query($connection, "UPDATE `vacation_data` SET vacation_on = vacation_on + $vacOn WHERE id=$id") or exit(mysqli_error($connection));
-
 
 if ($connection->query($querry) === TRUE) {
     echo "New record created successfully";
   } else {
     echo "Error: " . $querry . "<br>" . $connection->error;
   }
+
+  header("Refresh:0; url=http://localhost/vacations/employee/employee.php");
 
  ?>

@@ -10,8 +10,6 @@ const button = document.getElementById('loggin-button');
 
 button.addEventListener('click', function(){
     document.getElementById('alert').classList.add('hidden');
-    console.log(document.getElementById('email').value);
-    console.log(document.getElementById('password').value);
     $.ajax({
         type: "POST",
         url: "validation.php",
