@@ -239,6 +239,7 @@ th {
 .modal-header {
   text-align: center;
   font-size: 1.5rem;
+  position: relative;
 }
 
 .hidden {
@@ -260,6 +261,12 @@ th {
   display: flex;
   flex-direction: column;
   font-size: 1.5rem;
+}
+
+.close-modal{
+  position: absolute;
+  right: 20px;
+  top: 1px;
 }
 
 textarea {

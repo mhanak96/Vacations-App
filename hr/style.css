@@ -34,6 +34,7 @@ body {
   gap: 2rem;
   width: 40rem;
   justify-content: right;
+  align-items: baseline;
 }
 
 #logo {
@@ -201,6 +202,17 @@ th {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
+.modal3 {
+  position: fixed;
+  padding-top: 50px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
 .modal-content {
   position: relative;
   background-color: white;
@@ -212,6 +224,10 @@ th {
   -webkit-animation-duration: 0.4s;
   animation-name: animatetop;
   animation-duration: 0.4s;
+}
+
+.modal-add-worker{
+  height: 58rem; 
 }
 .close-btn,
 .close-btn2 {

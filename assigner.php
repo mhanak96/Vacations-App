@@ -13,6 +13,8 @@ session_start();
 </head>
 <body>
 <?php
+
+
  $emailText = $_POST['email'];
  $passwordText =  $_POST['password'];
  $connection = mysqli_connect('localhost','root','','application');

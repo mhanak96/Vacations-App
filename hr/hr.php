@@ -59,7 +59,7 @@ if(!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != '
         <div class="nav-btn">
 
         <form action="../logout.php" method="post">
-                <a href="../index.php"><button class="btn1">Wyloguj</button></a>
+                <a href="../index.php"><button class="btn1" id="btn-logout">Wyloguj</button></a>
         </form>
         </div>
       </div>
@@ -92,6 +92,7 @@ if(!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != '
             <table>
              <thead>
               <tr>
+              <th>ID wniosku</th>
                <th>Typ urlopu</th>
                <th>Okres</th> 
                <th>Zastępuje</th>
@@ -112,7 +113,7 @@ if(!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != '
         <div class="info">Wnioski urlopowe pracowników:</div>
         <div>
           <div id="application">
-            <a href="pracownicy.html">
+            <a href="pracownicy.php">
               <button class="btn3">Baza pracowników</button>
             </a>
           </div>
@@ -240,17 +241,18 @@ if(!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != '
     <?php
 
     $id = $_SESSION['session_data']['0'];
+    $worker_depart = $_SESSION['session_data']['6'];
 
 
-      $connection = mysqli_connect('localhost','root','','application');
+    $connection = mysqli_connect('localhost','root','','application');
 
-      $sel_vac_history = mysqli_query($connection, " SELECT type,start_date,end_date,replacement,status FROM `vacation_log` WHERE id in ($id)") or exit(mysqli_error($connection));
+    $sel_vac_history = mysqli_query($connection, "SELECT application_id,type,start_date,end_date,replacement,status FROM `vacation_log` WHERE id='$id' ORDER BY application_id DESC") or exit(mysqli_error($connection));
 
       $vac_history = mysqli_fetch_all($sel_vac_history, MYSQLI_ASSOC);
 
       //workers identity selector 
 
-      $sel_vac_workers = mysqli_query($connection, " SELECT id FROM `vacation_data` WHERE departament like '%Produkcja%' AND NOT id like '$id'") or exit(mysqli_error($connection));
+      $sel_vac_workers = mysqli_query($connection, " SELECT id FROM `vacation_data` WHERE departament like '$worker_depart' AND NOT id like '$id'") or exit(mysqli_error($connection));
 
       $vac_workers = mysqli_fetch_all($sel_vac_workers,  MYSQLI_NUM);
 
@@ -281,7 +283,9 @@ if(!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != '
         var workersApp = <?php echo json_encode($workers_applications);?>;
         var collegues = <?php echo json_encode($collegues_join);?>;
       </script>
+      
       <script type="text/javascript" src="hrscript.js"></script>
+      <script type="text/javascript" src="logout.js"></script>
       <script type="text/javascript" src="../jquery.js"></script>
       <script type="text/javascript" src="holidayrqhr.js"></script>
   </body>

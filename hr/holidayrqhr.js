@@ -6,6 +6,11 @@ const button = document.getElementById('submit-request');
 
 
 button.addEventListener('click', function(){
+    const panelVacation = document.getElementById('vacation-left');
+    const panelUsed = document.getElementById('vacation-used'); 
+    sessionStorage.setItem('tempCorrectResult', correctResult);
+    sessionStorage.setItem('tempVacOn', result);
+    
     $.ajax({
         type: "POST",
         url: "../holiday-request.php",
@@ -34,10 +39,10 @@ button.addEventListener('click', function(){
             default:
                 document.getElementById('error').textContent = "Correct2!";
                 window.location.reload(true);
+                
         }
         
         
-       
-        //document.forms["form-login"].submit();
+    
     });
 });

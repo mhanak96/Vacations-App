@@ -13,6 +13,8 @@ const panelUsed = document.getElementById('vacation-used');
 var errorInfo = document.getElementById('error'); 
 const position = document.getElementById('panel-position');
 
+workerData[4] = "***";
+
 //DOM paneli
 welcome.textContent = `Witaj ${workerData[1]}!`;
 panelName.textContent = `${workerData[1]} ${workerData[2]}`;
@@ -45,7 +47,7 @@ function Insert_Data() {
     var tr="";
     table.forEach(x=>{
        tr+='<tr>';
-       tr+='<td>'+x.type+'</td>'+'<td>'+`od ${x.start_date} do ${x.end_date}`+'</td>'+'<td>'+x.replacement+'</td>'+`<td class="status-info ${statusValidate(x.status)}">`+x.status+'</td>'
+       tr+='<td>'+x.application_id+'</td>'+'<td>'+x.type+'</td>'+'<td>'+`od ${x.start_date} do ${x.end_date}`+'</td>'+'<td>'+x.replacement+'</td>'+`<td class="status-info ${statusValidate(x.status)}">`+x.status+'</td>'
        tr+='</tr>'
     })
     tableInsert2.innerHTML+=tr;

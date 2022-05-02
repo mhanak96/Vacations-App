@@ -1,5 +1,5 @@
 <?php
-$connection = mysqli_connect('localhost','root','','application');
+ $connection = mysqli_connect('localhost','root','','application');
 
 $app_ID = $_COOKIE['clickedID'];
 

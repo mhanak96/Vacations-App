@@ -71,6 +71,7 @@ if(!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != '
                         <table id="reftable">
                             <thead>
                             <tr>
+                                <th>ID wniosku</th>
                                 <th>Typ urlopu</th>
                                 <th>Okres</th> 
                                 <th>Zastępuje</th>
@@ -181,16 +182,16 @@ if(!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != '
     <?php
 
         $id = $_SESSION['session_data']['0'];
+        $worker_depart = $_SESSION['session_data']['6'];
       
-
 
         $connection = mysqli_connect('localhost','root','','application');
 
-        $sel_vac_history = mysqli_query($connection, " SELECT type,start_date,end_date,replacement,status FROM `vacation_log` WHERE id in ($id)") or exit(mysqli_error($connection));
+        $sel_vac_history = mysqli_query($connection, "SELECT application_id,type,start_date,end_date,replacement,status FROM `vacation_log` WHERE id='$id' ORDER BY application_id DESC") or exit(mysqli_error($connection));
 
         $vac_history = mysqli_fetch_all($sel_vac_history, MYSQLI_ASSOC);
 
-        $sel_collegues = mysqli_query($connection, "SELECT first_name FROM `vacation_data` WHERE departament like '%Produkcja%' AND NOT id like $id") or exit(mysqli_error($connection));
+        $sel_collegues = mysqli_query($connection, "SELECT first_name FROM `vacation_data` WHERE departament like '$worker_depart' AND NOT id like $id") or exit(mysqli_error($connection));
 
         $name_collegues  = mysqli_fetch_all($sel_collegues, MYSQLI_NUM);
 
@@ -198,7 +199,7 @@ if(!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != '
 
         //workers identity selector 
 
-        $sel_vac_workers = mysqli_query($connection, " SELECT id FROM `vacation_data` WHERE departament like '%Produkcja%' AND NOT id like '$id'") or exit(mysqli_error($connection));
+        $sel_vac_workers = mysqli_query($connection, "SELECT id FROM `vacation_data` WHERE departament like '$worker_depart' AND NOT id like '$id'") or exit(mysqli_error($connection));
 
         $vac_workers = mysqli_fetch_all($sel_vac_workers,  MYSQLI_NUM);
 

@@ -22,6 +22,7 @@ const modal3 = document.querySelector(".modal3");
 const modal4 = document.querySelector('.modal4');
 var errorInfo = document.getElementById('error'); 
 const position = document.getElementById('panel-position');
+// const modalClose =  document.querySelector('.close-modal');
 /*----------------------------------------------------*/
 
 welcome.textContent = `Witaj ${pausecontent[1]}!`;
@@ -77,7 +78,7 @@ function Insert_Data() {
  var tr="";
  table.forEach(x=>{
     tr+='<tr>';
-    tr+='<td>'+x.type+'</td>'+'<td>'+`od ${x.start_date} do ${x.end_date}`+'</td>'+'<td>'+x.replacement+'</td>'+`<td class="status-info ${statusValidate(x.status)}">`+x.status+'</td>'
+    tr+='<td>'+x.application_id+'</td>'+'<td>'+x.type+'</td>'+'<td>'+`od ${x.start_date} do ${x.end_date}`+'</td>'+'<td>'+x.replacement+'</td>'+`<td class="status-info ${statusValidate(x.status)}">`+x.status+'</td>'
     tr+='</tr>'
 
  })
@@ -85,6 +86,9 @@ function Insert_Data() {
  //Help......  
 }
 
+// modalClose.addEventListener('click', function(){
+//     modal3.classList.add('.hidden');
+// })
 
 function Insert_Data_Workers() {
    var tableInsertWorkers = document.getElementById("datas_works");
@@ -109,7 +113,11 @@ function Insert_Data_Workers() {
   //
 
 
-var statusInf = document.querySelectorAll("status-action");
+// var statusInf = document.querySelectorAll("status-action");
+
+// statusInf.addEventListener('click', function(){
+//     modal3.classList.remove('.hidden');
+// })
 
 function setCookie(cName, cValue, expDays) {
    let date = new Date();

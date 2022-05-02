@@ -10,6 +10,12 @@ const modal3 = document.querySelector(".modal3");
 const modal4 = document.querySelector('.modal4');
 var errorInfo = document.getElementById('error'); 
 const position = document.getElementById('panel-position');
+const logout = document.getElementById('panel-position');
+
+
+   
+
+
 
 
 welcome.textContent = `Witaj ${hrData[1]}!`;
@@ -20,8 +26,20 @@ position.textContent = `${hrData[9]}`;
 
 welcome.textContent = `Witaj ${hrData[1]}!`;
 panelName.textContent = `${hrData[1]} ${hrData[2]}`;
-panelVacation.textContent = `Pozostało ${hrData[7]} dni do wykorzystania`;
-panelUsed.textContent = `Wykorzystano ${hrData[8]} dni urlopu`;
+
+
+if (sessionStorage.getItem('tempCorrectResult') == null){
+   panelVacation.textContent = `Pozostało ${hrData[7]} dni do wykorzystania`;
+   panelUsed.textContent = `Wykorzystano ${hrData[8]} dni urlopu`;
+}
+else{
+    panelVacation.textContent = `Pozostało ${sessionStorage.getItem('tempCorrectResult')} dni do wykorzystania`;
+    panelUsed.textContent = `Wykorzystano ${parseInt(hrData[8]) + parseInt(sessionStorage.getItem('tempVacOn'))} dni urlopu`;
+    hrData[7] = sessionStorage.getItem('tempCorrectResult');
+    hrData[8] = sessionStorage.getItem('tempVacOn');
+}
+
+
 
 
 
@@ -50,7 +68,7 @@ function Insert_Data() {
     var tr="";
     table.forEach(x=>{
        tr+='<tr>';
-       tr+='<td>'+x.type+'</td>'+'<td>'+`od ${x.start_date} do ${x.end_date}`+'</td>'+'<td>'+x.replacement+'</td>'+`<td class="status-info ${statusValidate(x.status)}">`+x.status+'</td>'
+       tr+='<td>'+x.application_id+'</td>'+'<td>'+x.type+'</td>'+'<td>'+`od ${x.start_date} do ${x.end_date}`+'</td>'+'<td>'+x.replacement+'</td>'+`<td class="status-info ${statusValidate(x.status)}">`+x.status+'</td>'
        tr+='</tr>'
    
     })
