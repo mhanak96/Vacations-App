@@ -1,13 +1,28 @@
+'use strict'
+
 const button = document.getElementById('crud-submit');
 const buttonUpdate = document.getElementById('crud-btn-update');
 
+// Załadowanie wszystkich pracowników
+function Insert_Data() {
+    var tableInsert2 = document.getElementById("datas");
+    tableInsert2.innerHTML="";
+    var tr="";
+    table_crud.forEach(x=>{
+       tr+='<tr>';
+       tr+='<td>'+x.id+'</td>'+'<td>'+x.first_name+'</td>'+'<td>'+x.second_name+'</td>'+'<td>'+x.email+'</td>'+'<td>'+x.password+'</td>'+'<td>'+x.role+'</td>'+'<td>'+x.departament+'</td>'+'<td>'+x.vacation_total+'</td>'+'<td>'+x.vacation_on+'</td>'+'<td>'+x.job_title+'</td>'+'<td>'+`<input type="button" value="Edytuj" onclick="database_update_toogle(${x.id})"></input> <input type="button" value="Usuń" onclick="database_remove(${x.id})"></input>`+'</td>'
+       tr+='</tr>'
+    })
+    tableInsert2.innerHTML+=tr;
+   }
 
+Insert_Data();     
 
+// utworzenie nowego pracownika
 button.addEventListener('click', function(){
-    console.log("Działam");
     $.ajax({
         type: "POST",
-        url: "process.php",
+        url: "databasei.php",
         data: {
             id: document.getElementById('id').value,
             first_name: document.getElementById('first_name').value,
@@ -41,28 +56,8 @@ button.addEventListener('click', function(){
     });
 });
 
-
-
-console.log(table_crud);
-
-
-function Insert_Data() {
-    var tableInsert2 = document.getElementById("datas");
-    tableInsert2.innerHTML="";
-    var tr="";
-    table_crud.forEach(x=>{
-       tr+='<tr>';
-       tr+='<td>'+x.id+'</td>'+'<td>'+x.first_name+'</td>'+'<td>'+x.second_name+'</td>'+'<td>'+x.email+'</td>'+'<td>'+x.password+'</td>'+'<td>'+x.role+'</td>'+'<td>'+x.departament+'</td>'+'<td>'+x.vacation_total+'</td>'+'<td>'+x.vacation_on+'</td>'+'<td>'+x.job_title+'</td>'+'<td>'+`<input type="button" value="Edytuj" onclick="database_update_toogle(${x.id})"></input> <input type="button" value="Usuń" onclick="database_remove(${x.id})"></input>`+'</td>'
-       tr+='</tr>'
-    })
-    tableInsert2.innerHTML+=tr;
-    //Help......  
-   }
-
-Insert_Data();      
-
+// Usunięcie pracownika 
 function database_remove(x){
-    console.log("Działam - usunięto!");
     $.ajax({
         type: "POST",
         url: "databaser.php",
@@ -73,7 +68,6 @@ function database_remove(x){
     .done(function (msg) {
         switch(msg){
             case "correct":
-                document.forms["crud-form"].submit();
                 window.location.reload(true);
             break;
             case "incorrect":
@@ -91,6 +85,7 @@ function database_remove(x){
     });
 };
 
+// Edytowanie danych pracownika
 function database_update_toogle(x){
     const updLabel = document.getElementById('id_update');
     const modal3 = document.querySelector('.modal3');

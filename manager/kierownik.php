@@ -43,7 +43,7 @@ if(!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != '
             <div id="logo">Logo</div>
             <div id="welcome">Witaj ${firstName}</div>
             <form action="../logout.php" method="post">
-                <a href="../index.php"><button class="btn1">Wyloguj</button></a>
+                <a href="../index.php"><button class="btn1" id="btn-logout">Wyloguj</button></a>
             </form>
         </div>
             <div id="box">
@@ -58,9 +58,6 @@ if(!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != '
                 <div class="panelBox"><i class="icon-bat2"></i>
                 <span id="vacation-left">${vacationDaysLeft}</span>
                 </div>
-                <div class="panelBox"><i class="icon-help"></i>
-                <span id="vacation-used">${vacationsTotal}</span>
-                </div>
             </div> 
 
             <div id="box">         
@@ -74,7 +71,7 @@ if(!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != '
                         <table>
                             <thead>
                             <tr>
-                                <th>ID wniosku</th> 
+                                <th>ID wniosku</th>
                                 <th>Typ urlopu</th>
                                 <th>Okres</th> 
                                 <th>Zastępuje</th>
@@ -99,6 +96,7 @@ if(!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != '
                         <table>
                             <thead>
                             <tr>
+                                <th>ID wniosku:</th>
                                 <th>Pracownik</th> 
                                 <th>Typ urlopu</th> 
                                 <th>Okres</th>  
@@ -178,6 +176,9 @@ if(!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != '
                         <label>Okres czasu: <span id="modal3-time">...</span></label>
                         </div>
                         <div>
+                        <label>Ilość dni: <span id="modal3-days-count">...</span></label>
+                        </div>
+                        <div>
                         <label>Zastępuje:<span id="modal3-deputy">...</span></label>
                         </div>
                         <div>
@@ -186,7 +187,8 @@ if(!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != '
                         <div class="modal-footer">
                         <input type="submit" id="btn-accept" id="submit-request" class="submit-btn1" value="Zaakceptuj"></input>    
                         </form>
-                        <form>
+                        <form action="decision-decline.php" method="POST">
+                        <span id="number0">${number}</span>
                         <button id="btn-decline" class="close-btn cl2">Odrzuć</button>
                         </div>
                         </form>
@@ -223,9 +225,10 @@ if(!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != '
     $id = $_SESSION['session_data']['0'];
     $worker_depart = $_SESSION['session_data']['6'];
 
+
     $connection = mysqli_connect('localhost','root','','application');
     
-    $sel_vac_history = mysqli_query($connection, "SELECT application_id,type,start_date,end_date,replacement,status FROM `vacation_log` WHERE id='$id' ORDER BY application_id DESC") or exit(mysqli_error($connection));
+    $sel_vac_history = mysqli_query($connection, " SELECT application_id,type,start_date,end_date,replacement,status FROM `vacation_log` WHERE id='$id' ORDER BY application_id DESC") or exit(mysqli_error($connection));
     
     $vac_history = mysqli_fetch_all($sel_vac_history, MYSQLI_ASSOC);
 
@@ -235,23 +238,36 @@ if(!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != '
     
     $vac_workers = mysqli_fetch_all($sel_vac_workers,  MYSQLI_NUM);
     
-    $workers_join = array_merge(...$vac_workers); 
 
-    $arr = implode(",", $workers_join);
 
-    //workers history selector
+    if (empty($vac_workers[0])){
+        $workers_join = "brak pracowikow";
+        $arr = "brak pracowników";
+        $vac_workers_history = "brak pracowników";
+        $collegues_join = "";
+        
+
+
+    }
+    else{
+        $workers_join = array_merge(...$vac_workers); 
+        $arr = implode(",", $workers_join);
+         //workers history selector
     
-    $sel_vac_workers_history = mysqli_query($connection, " SELECT * FROM `vacation_log` WHERE id in ($arr)") or exit(mysqli_error($connection));
+        $sel_vac_workers_history = mysqli_query($connection, " SELECT * FROM `vacation_log` WHERE id in ($arr) ORDER BY application_id DESC") or exit(mysqli_error($connection));
 
-    $vac_workers_history = mysqli_fetch_all($sel_vac_workers_history, MYSQLI_NUM);
+        $vac_workers_history = mysqli_fetch_all($sel_vac_workers_history, MYSQLI_NUM);
      
+        $sel_collegues = mysqli_query($connection, "SELECT first_name FROM `vacation_data` WHERE departament like '$worker_depart' AND NOT id like $id") or exit(mysqli_error($connection));
+
+        $name_collegues  = mysqli_fetch_all($sel_collegues, MYSQLI_NUM);
+
+        $collegues_join = array_merge(...$name_collegues); 
+    }
 
 
-    $sel_collegues = mysqli_query($connection, "SELECT first_name FROM `vacation_data` WHERE departament like '$worker_depart' AND NOT id like $id") or exit(mysqli_error($connection));
 
-    $name_collegues  = mysqli_fetch_all($sel_collegues, MYSQLI_NUM);
-
-    $collegues_join = array_merge(...$name_collegues); 
+   
 
 
     /*$toTable = mysqli_fetch_array($select, MYSQLI_NUM);
@@ -272,12 +288,13 @@ if(!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != '
      var tableWorkers = <?php echo json_encode($vac_workers);?>;
      var tableWorkersSecond = <?php echo json_encode($arr);?>;
      var tableWorkersThird = <?php echo json_encode($vac_workers_history);?>;
-    var collegues = <?php echo json_encode($collegues_join);?>;
+     var collegues = <?php echo json_encode($collegues_join);?>;
      </script>
 
     <script type="text/javascript" src="kierownik.js"></script>
-    <script type="text/javascript" src="../jquery.js"></script>
-      <script type="text/javascript" src="managerquery.js"></script>
+    <script type="text/javascript" src="../global/js/logout.js"></script>
+    <script type="text/javascript" src="../global/js/jquery.js"></script>
+    <script type="text/javascript" src="managerquery.js"></script>
 
 </body>
 </html>

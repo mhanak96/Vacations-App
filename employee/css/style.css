@@ -22,6 +22,13 @@ body {
   flex-wrap: wrap;
 }
 
+i .icon-book {
+  height: 20px;
+  width: 20px;
+  font-size: 20px;
+  color: #a30d0d;
+}
+
 @media screen and (max-width: 700px) {
   #nav {
     margin: 2rem;
@@ -42,10 +49,24 @@ body {
   border: none;
   margin-right: 4rem;
   cursor: pointer;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-transition-duration: 0.4s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  transition-duration: 0.4s;
+  transition: 0.4s ease-in-out;
+}
+
+.btn1 a {
+  text-decoration: none;
 }
 
 .btn1:hover {
   background-color: #d2fac0;
+  -webkit-transform: scale(1.07);
+  transform: scale(1.07);
 }
 
 #box {
@@ -59,6 +80,7 @@ body {
   margin: 0 2rem;
   border-radius: 1.5rem;
   font-weight: 900;
+  text-align: center;
 }
 
 #dashboard {
@@ -71,7 +93,7 @@ body {
 }
 
 .panelBox {
-  width: 40rem;
+  width: 35rem;
   height: 20rem;
   border: 0.4rem solid rgb(211, 210, 210);
   margin: 2rem;
@@ -94,18 +116,33 @@ body {
 }
 
 .btn2 {
-  height: 4rem;
-  width: 30rem;
+  height: 8rem;
+  width: 25rem;
   border-radius: 5rem;
   background-color: #ffffff;
   color: black;
   font-weight: 900;
   border: none;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-transition-duration: 0.4s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  transition-duration: 0.4s;
+  transition: 0.4s ease-in-out;
 }
+
 
 .btn2:hover {
   background-color: #d2fac0;
+  -webkit-transform: scale(1.07);
+  transform: scale(1.07);
 }
 
 #tab {
@@ -121,6 +158,10 @@ td {
   padding: 1rem;
 }
 
+td a {
+  text-decoration: none;
+}
+
 table {
   width: 100%;
   text-align: center;
@@ -128,6 +169,7 @@ table {
   color: black;
   border-radius: 2rem;
 }
+
 th {
   border-bottom: 0.1rem solid rgb(211, 210, 210);
 }
@@ -152,6 +194,7 @@ th {
   background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.5);
 }
+
 .modal-content {
   position: relative;
   background-color: white;
@@ -164,6 +207,7 @@ th {
   animation-name: animatetop;
   animation-duration: 0.4s;
 }
+
 .close-btn {
   float: right;
   width: 12rem;
@@ -210,7 +254,6 @@ th {
   background-color: #5d6466;
 }
 
-
 .submit-btn1:hover {
   background-color: #379bb9;
 }
@@ -220,16 +263,19 @@ th {
     top: -300px;
     opacity: 0;
   }
+
   to {
     top: 0;
     opacity: 1;
   }
 }
+
 @keyframes animatetop {
   from {
     top: -300px;
     opacity: 0;
   }
+
   to {
     top: 0;
     opacity: 1;
@@ -240,21 +286,6 @@ th {
   text-align: center;
   font-size: 1.5rem;
 }
-
-.hidden {
-  display: none;
-}
-
-.smodal {
-  position: fixed;
-  padding-top: 50px;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgb(0, 0, 0);
-  background-color: rgba(0, 0, 0, 0.5);
-} 
 
 .inputs {
   display: flex;
@@ -272,29 +303,90 @@ select {
   height: 3rem;
   font-size: 1.5rem;
 }
+
 ol {
   font-size: 2rem;
 }
 
-/*status colors */ 
-.sacc{
-	color: #1a8a54;
-  font-weight: bold;
+.footer {
+  color: #fff;
+  background-color: #004a99;
+
 }
 
-.slea{
-	color: #7d188c;
-  font-weight: bold;
+.containerFooter {
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 1.8rem;
+  width: auto;
 }
 
-.swai{
-	color: #8a8c18;
-  font-weight: bold;
-  text-decoration: underline;
+.person {
+  width: auto;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.person img {
+  padding: 4px;
+}
+
+.person img:hover {
   cursor: pointer;
 }
 
-.sref{
-	color: #8c1818;
-  font-weight: bold;
+@media screen and (max-width: 700px) {
+  .containerFooter {
+    font-size: 1rem;
+  }
+
+  .person img {
+    padding: 1px;
+  }
+}
+
+/* Scroll UP */
+#button {
+  display: inline-block;
+  background-color: rgb(219, 216, 212, 0.5);
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  border-radius: 4px;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  transition: background-color .3s,
+    opacity .5s, visibility .5s;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1000;
+}
+
+#button::after {
+  content: url("../img/up-arrow.png");
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 2em;
+  line-height: 50px;
+  color: #fff;
+}
+
+#button:hover {
+  cursor: pointer;
+  background-color: rgb(0, 0, 0, 0.5);
+}
+
+#button:active {
+  background-color: rgb(0, 0, 0, 0.5);
+}
+
+#button.show {
+  opacity: 1;
+  visibility: visible;
+  z-index: 5;
 }

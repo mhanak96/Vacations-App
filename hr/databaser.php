@@ -1,5 +1,5 @@
 <?php 
-
+// usunięcie danych pracownika z bazy
 $id = $_POST['id'];
 
 $connection = mysqli_connect('localhost','root','','application');

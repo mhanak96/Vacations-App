@@ -17,40 +17,31 @@ document.cookie = "clickedID=0";
 const welcome = document.getElementById('welcome');
 const panelName = document.getElementById('panel-name');
 const panelVacation = document.getElementById('vacation-left');
-const panelUsed = document.getElementById('vacation-used'); 
 const modal3 = document.querySelector(".modal3");
 const modal4 = document.querySelector('.modal4');
 var errorInfo = document.getElementById('error'); 
 const position = document.getElementById('panel-position');
-// const modalClose =  document.querySelector('.close-modal');
 /*----------------------------------------------------*/
 
 welcome.textContent = `Witaj ${pausecontent[1]}!`;
 panelName.textContent = `${pausecontent[1]} ${pausecontent[2]}`;
 panelVacation.textContent = `Pozostało ${pausecontent[7]} dni urlopu`;
-panelUsed.textContent = `Wykorzystano ${pausecontent[8]} dni urlopu`;
 position.textContent = `${pausecontent[9]}`;
 
+ // Aktualizacja danych po złożeniu wniosku
+ if (sessionStorage.getItem('tempCorrectResult') == null){
+    panelVacation.textContent = `Pozostało ${pausecontent[7]} dni do wykorzystania`;
+ }
+ else{
+    panelVacation.textContent = `Pozostało ${sessionStorage.getItem('tempCorrectResult')} dni do wykorzystania`;
+    pausecontent[7] = sessionStorage.getItem('tempCorrectResult');
+ }
 
 
-/*
-function Insert_Data() {
-    var tableData = document.getElementById("datas");
-    tableData.innerHTML="";
-    var tr="";
-    tableLocal.forEach(x=>{
-       tr+='<tr>';
-       tr+='<td>'+x[1]+'</td>'+'<td>'+x[2]+'</td>'+'<td>'+x[3]+'</td>';
-       tr+='</tr>';
-  
-    })
-    table.innerHTML+=tr;
-    //Help......  
-  }
+ 
 
-  Insert_Data();
+var correctResult;
 
-  */
 
 let statusValidate = function(status){
    if(status === 'Zaakceptowane'){
@@ -83,12 +74,8 @@ function Insert_Data() {
 
  })
  tableInsert.innerHTML+=tr;
- //Help......  
 }
 
-// modalClose.addEventListener('click', function(){
-//     modal3.classList.add('.hidden');
-// })
 
 function Insert_Data_Workers() {
    var tableInsertWorkers = document.getElementById("datas_works");
@@ -97,27 +84,17 @@ function Insert_Data_Workers() {
    tableWorkersThird.forEach(x=>{
       trs+='<tr>';
       
-      trs+='<td>'+x[2]+'</td>'+'<td>'+x[3]+'</td>'+'<td>'+`od ${x[4]} do ${x[5]}`+'</td>'+'<td>'+x[6]+'</td>'+`<td class="status-action ${statusValidate(x[8])}" onclick="applicationReview(${x[0]})">`+x[8]+'</td>'
+      trs+='<td>'+x[0]+'</td>'+'<td>'+x[2]+'</td>'+'<td>'+x[3]+'</td>'+'<td>'+`od ${x[4]} do ${x[5]}`+'</td>'+'<td>'+x[6]+'</td>'+`<td class="status-action ${statusValidate(x[8])}" onclick="applicationReview(${x[0]})">`+x[8]+'</td>'
 
-      //trs+='<td>'+x[2]+'</td>'+'<td>'+x[3]+'</td>'+'<td>'+`od ${x[4]} do ${x[5]}`+'</td>'+'<td>'+x[6]+'</td>'+ `<td><button id="modal-btn2" class="btn2" onClick="applicationReview(${x[0]})">${x[8]}</button>`+'</td>'
+    
       trs+='</tr>'
-
-      //`< class="status-action ${statusValidate(x[8])}>` +
   
    })
    tableInsertWorkers.innerHTML+=trs;
-   //Help......  
+
   }
 
-
-  //
-
-
-// var statusInf = document.querySelectorAll("status-action");
-
-// statusInf.addEventListener('click', function(){
-//     modal3.classList.remove('.hidden');
-// })
+var statusInf = document.querySelectorAll("status-action");
 
 function setCookie(cName, cValue, expDays) {
    let date = new Date();
@@ -126,21 +103,13 @@ function setCookie(cName, cValue, expDays) {
    document.cookie = cName + "=" + cValue + "; " + expires + "; path=/";
 }
 
-// function responseApply(response){
-   
-
-//    mName.textContent = response[2];
-   
-  
-
-// }
-
 var rescopy = "";
  
 const applicationReview = function(x){
 
      
    const petitionNumber = document.getElementById('number');
+   const petitionNumber3 = document.getElementById('number0');
    const petitionNumber2 = document.getElementById('number2');
 
    document.cookie = `clickedID=${x}`;
@@ -161,6 +130,25 @@ const applicationReview = function(x){
       return "";
     }
 
+
+    function countDays(start, end){
+        let vacationStart = new Date(start);
+        let vacationEnd = new Date(end);  
+        let calcDays = vacationEnd.getTime() - vacationStart.getTime();
+      
+        var daysTotal = Math.ceil(calcDays / (1000 * 3600 * 24));
+        console.log(daysTotal + ' dni urlopu');
+        
+        if(daysTotal == 0){
+            daysTotal = 1;
+        }
+       
+        return(daysTotal);
+      
+      }
+
+
+    var daysResult;
     let cookieValue = getCookie("clickedID");
 
     console.log(cookieValue);
@@ -175,6 +163,7 @@ const applicationReview = function(x){
           var response = JSON.parse(this.responseText);
            const mName = document.getElementById('modal3-name');
            const mTime = document.getElementById('modal3-time');
+           const daysCount = document.getElementById('modal3-days-count');
            const mDeputy = document.getElementById('modal3-deputy');
            const mType = document. getElementById('modal3-type');
 
@@ -191,6 +180,11 @@ const applicationReview = function(x){
           
            mName.textContent = `Imię i nazwisko: ${rescopy[0][1][2]}`;
            mTime.textContent = `${rescopy[0][1][4]} - ${rescopy[0][1][5]}`; 
+           daysResult = countDays(rescopy[0][1][4], rescopy[0][1][5]);
+           daysCount.textContent = `${daysResult}`;
+
+      
+
            mDeputy.textContent = rescopy[0][1][6];
            mType.textContent = rescopy[0][1][3]; 
 
@@ -215,24 +209,10 @@ const applicationReview = function(x){
       }
   };
 
- 
- 
-
-   
     petitionNumber.textContent = cookieValue; 
+    petitionNumber3.textContent = cookieValue;
     petitionNumber2.textContent = cookieValue; 
     
-    
-
-
-
-
-
-
-
-
-
-
     $.ajax({
       type: "GET",
       url: "appdecision.php",
@@ -258,45 +238,8 @@ const applicationReview = function(x){
       }
    });
 
- 
-
-  
-  
-  
-
-   
-
-  
- 
-
-
-
-   
-   
-   // statusInf.forEach((btn) =>
-   //   btn.addEventListener("click", () =>
-   //     btn.id === "modal-btn"
-   //       ? (modal.style.display = "block")
-   //       : (modal2.style.display = "block")
-   //   )
-   // );
-   
-   // windowsClose.forEach((btn) =>
-   //   btn.addEventListener("click", () =>
-   //     btn.id === "close"
-   //       ? (modal.style.display = "none")
-   //       : (modal2.style.display = "none")
-   //   )
-   // );
-   
-   // const modal2 = document.querySelector(".modal2"); 
-
-   // (modal2.style.display = "block");
-
-
-
    console.log(`Kliknięto na wniosek nr ${x}`);
-   //sprawdzić czy zawiera klasę 
+   
 
    
 
@@ -320,50 +263,20 @@ function clicked2(){
 }
 
 
-//console.log(statusInf);
+if(table.length !== 0){
+    Insert_Data();
+}
 
+if(tableWorkersThird !== "brak pracowników"){
+    Insert_Data_Workers();
+}
 
-
-
-
-
-
-// responseApply(rescopy);
-// console.log(rescopy);
-
-
-
-
-
-
-
-//statusInft_Data();
-Insert_Data();
-Insert_Data_Workers();
-
-
-
-// $('#logout').click(function() {
-//    var request = $.ajax({
-//        url: "logout.php",
-//        type: "GET"
-//    });
-
-//    request.done(function(msg) {
-//       header("http://localhost/vacations/index.php");
-//    });
-
-//    request.fail(function(jqXHR, textStatus) {
-//        alert("Error on Logging Out");
-//    });
-// });
 
 
 const buttonAccept = document.getElementById('btn-accept');
 const buttonDecline = document.getElementById('btn-decline');
 
 buttonAccept.addEventListener('click', function(){
-   //document.getElementById('alert').classList.add('hidden');
    $.ajax({
        type: "POST",
        url: "decision-approve.php",
@@ -375,7 +288,6 @@ buttonAccept.addEventListener('click', function(){
        }
    })
    .done(function (msg) {
-       //alert("Data Saved: " + msg);
        switch(msg){
            case "correct":
                document.forms["request-form"].submit();
@@ -395,46 +307,48 @@ buttonAccept.addEventListener('click', function(){
        
        
        window.location.reload(true);
-       //document.forms["form-login"].submit();
    });
 });
 
-buttonDecline.addEventListener('click', function(){
-   //document.getElementById('alert').classList.add('hidden');
-   $.ajax({
-       type: "POST",
-       url: "decision-decline.php",
-       data: {
-           vacation: document.getElementById('vacation').value,
-           datepicker: document.getElementById('daterangepicker').value,
-           deputy: document.getElementById('deputy').value,
-           comment: document.getElementById('comment').value
-       }
-   })
-   .done(function (msg) {
-       //alert("Data Saved: " + msg);
-       switch(msg){
-           case "correct":
-               document.forms["request-form"].submit();
-               window.location.reload(true);
-           break;
-           case "incorrect":
-               document.getElementById('alert').classList.remove('hidden');
-               document.getElementById('error').textContent = "Błędne dane logowania";
-           break;
-           case "error":
-               document.getElementById('error').textContent = "Nieznany bład";
-           break;
-           default:
-               document.getElementById('error').textContent = "Correct2!";
-               window.location.reload(true);
-       }
+
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+// buttonDecline.addEventListener('click', function(){
+//    $.ajax({
+//        type: "POST",
+//        url: "decision-decline.php",
+//        data: {
+//            vacation: document.getElementById('vacation').value,
+//            datepicker: document.getElementById('daterangepicker').value,
+//            deputy: document.getElementById('deputy').value,
+//            comment: document.getElementById('comment').value,
+//            days_back: daysResult
+//        }
+//    })
+//    .done(function (msg) {
+//        switch(msg){
+//            case "correct":
+//                document.forms["request-form"].submit();
+//                window.location.reload(true);
+//            break;
+//            case "incorrect":
+//                document.getElementById('alert').classList.remove('hidden');
+//                document.getElementById('error').textContent = "Błędne dane logowania";
+//            break;
+//            case "error":
+//                document.getElementById('error').textContent = "Nieznany bład";
+//            break;
+//            default:
+//                document.getElementById('error').textContent = "Correct2!";
+//                window.location.reload(true);
+//        }
        
        
-       window.location.reload(true);
-       //document.forms["form-login"].submit();
-   });
-});
+//        window.location.reload(true);
+//    });
+// });
+
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 const options = document.getElementById("deputy");
 

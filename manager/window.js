@@ -65,6 +65,8 @@ $("#daterangepicker").daterangepicker(
 );
 
 
+
+
 function out(start, end, label){
   result = countDays(start, end);
   if(result > pausecontent[7]){
@@ -96,4 +98,3 @@ function countDays(start, end){
   return(daysTotal);
 
 }
-

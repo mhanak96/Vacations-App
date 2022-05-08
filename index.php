@@ -14,7 +14,6 @@
 
 <body>
 <div class='logo'>LOGO</div>
-
 	<div id="container">		
 			<form class="login-form" id="form-login" method="post" action="assigner.php">
 				<input type="text" name="email" id="email" placeholder="login" onfocus="this.placeholder=''"onblur="this.placeholder='login'">	
@@ -27,11 +26,9 @@
 				<input type="button" name="login_user" id="loggin-button" value="Zaloguj się">
 			</form>
 	</div>
-
-	
 	<div class="footer">STOPKA</div>
 
-	<script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript" src="global/js/jquery.js"></script>
 	<script type="text/javascript" src="validation.js"></script>
 </body>
 </html>

@@ -7,7 +7,6 @@ if(!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != '
     exit();
 }
 
-  
 ?>
 
 <!DOCTYPE html>
@@ -20,8 +19,8 @@ if(!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != '
     <meta name="description" content="Panel Kadr" />
     <meta name="keywords" content="Panel, Kadry" />
 
-    <link rel="stylesheet" href="style.css" type="text/css" />
-    <link rel="stylesheet" href="fontello-2881fecc/css/tw.css" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" />
+    <link rel="stylesheet" href="../global/external-resources/fontello-2881fecc/css/tw.css" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -52,16 +51,12 @@ if(!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != '
         </div>
       </div>
 
+      <!-- wczytywanie pracowników -->
       <?php 
         $connection = mysqli_connect('localhost','root','','application');
         $sel_crud = mysqli_query($connection, " SELECT * FROM vacation_data") or exit(mysqli_error($connection));
-
         $table_crud = mysqli_fetch_all($sel_crud, MYSQLI_ASSOC);
-
-
-
       ?>
-
       <div class="tab">
         <table>
           <tr>
@@ -83,13 +78,13 @@ if(!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != '
         </table>
       </div>
     </div>
-    <!---------------------------okno----------------------------->
+
+    <!---------------------------dodawanie pracownika----------------------------->
     <div class="modal2">
       <div class="modal-content modal-add-worker">
         <div class="modal-header">
           <h1>Dodaj pracownika</h1>
         </div>
-        <!-- action="process.php" method="POST" -->
         <form class="crud-form" action="process.php" method="POST">
         <div class="inputs">
           <label for="first_name">Imię:</label>
@@ -175,13 +170,12 @@ if(!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != '
       </div>
     </div>
 
-    <!-- modal 2 -->
+    <!-- Edytowanie danych pracownika -->
     <div class="modal3 hidden">
       <div class="modal-content modal-add-worker">
         <div class="modal-header">
           <h1>Zaktualizuj dane pracownika</h1>
         </div>
-        <!-- action="process.php" method="POST" -->
         <form class="crud-update" action="databaseu.php" method="POST">
         <div class="inputs">
           <label for="first_name2">Imię:</label>
@@ -258,11 +252,12 @@ if(!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != '
       </div>
     </div>
 
+<!-- przekazywanie informacji z cruda do js -->
     <script type="text/javascript">
         var table_crud = <?php echo json_encode($table_crud);?>;
     </script>
-    <script type="text/javascript" src="../jquery.js"></script>
-    <script type="text/javascript" src="window2.js"></script>
+    <script type="text/javascript" src="../global/js/jquery.js"></script>
+    <script type="text/javascript" src="js/window2.js"></script>
     <script type="text/javascript" src="crud.js"></script>
   </body>
 </html>

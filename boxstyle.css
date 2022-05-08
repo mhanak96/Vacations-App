@@ -1,0 +1,17 @@
+.container{
+    background: pink;
+    height:  300px;
+    width: 400px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.box {
+    background: red;
+    height: 50px;
+    margin: 10px;
+    width: 50px;
+    justify-self: center;
+}

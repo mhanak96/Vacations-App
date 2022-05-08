@@ -1,13 +1,8 @@
 'use strict'
 
-
 const button = document.getElementById('submit-request');
 
-
-
 button.addEventListener('click', function(){
-    const panelVacation = document.getElementById('vacation-left');
-    const panelUsed = document.getElementById('vacation-used'); 
     sessionStorage.setItem('tempCorrectResult', correctResult);
     sessionStorage.setItem('tempVacOn', result);
     
@@ -41,8 +36,5 @@ button.addEventListener('click', function(){
                 window.location.reload(true);
                 
         }
-        
-        
-    
     });
 });

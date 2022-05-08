@@ -5,7 +5,9 @@ const button = document.getElementById('submit-request');
 
 
 
+
 button.addEventListener('click', function(){
+    sessionStorage.setItem('tempCorrectResult', correctResult);
     $.ajax({
         type: "POST",
         url: "../holiday-request.php",
@@ -33,11 +35,11 @@ button.addEventListener('click', function(){
             break;
             default:
                 document.getElementById('error').textContent = "Correct2!";
-                //window.location.reload(true);
+                window.location.reload(true);
         }
         
         
        
-        //document.forms["form-login"].submit();
+        
     });
 });

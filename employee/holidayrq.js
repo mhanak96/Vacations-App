@@ -1,14 +1,10 @@
 'use strict'
 
-
 const button = document.getElementById('submit-request');
 
-
-
 button.addEventListener('click', function(){
-
-  
-
+    sessionStorage.setItem('tempCorrectResult', correctResult);
+    sessionStorage.setItem('tempVacOn', result);
     document.getElementById('alert').classList.add('hidden');
     $.ajax({
         type: "POST",
@@ -23,7 +19,6 @@ button.addEventListener('click', function(){
         }
     })
     .done(function (msg) {
-        alert("Data Saved: " + msg);
         switch(msg){
             case "correct":
                 document.forms["request-form"].submit();
@@ -40,10 +35,5 @@ button.addEventListener('click', function(){
                 document.getElementById('error').textContent = "Correct2!";
                 window.location.reload(true);
         }
-        
-        
-        window.location.reload(false);
-        //window.location.replace("http://localhost/vacations/employee/employee.php");
-        //document.forms["form-login"].submit();
     });
 });
