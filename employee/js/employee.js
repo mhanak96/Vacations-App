@@ -33,7 +33,7 @@ let statusValidate = function(status){
     if(status === 'Zaakceptowane'){
        return 'sacc';
     }
-    else if(status === 'Odrzucono'){
+    else if(status === 'Odrzucono przez Kierownika' || status === 'Odrzucono przez HR'){
        return 'sref';
     }
     else if(status === 'Oczekuje na akceptacje HR'){

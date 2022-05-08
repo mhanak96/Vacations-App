@@ -62,6 +62,7 @@ $("#daterangepicker").daterangepicker(
     out(start, end, label);
    
   }
+  
 );
 
 
@@ -85,16 +86,32 @@ function out(start, end, label){
   }
 };
 
+// const days = [0,1,2,3,4,5,6];
+
+// 'Monday', 'Tuesday', 'Wednesday', 'Thrusday', 'Friday', 'Saturday', 'Sunday'
+
+function countCertainDays( days, d0, d1 ) {
+  var ndays = 1 + Math.round((d1-d0)/(24*3600*1000));
+  var sum = function(a,b) {
+    return a + Math.floor( ( ndays + (d0.getDay()+6-b) % 7 ) / 7 ); };
+  return days.reduce(sum,0);
+}
 
 function countDays(start, end){
   let vacationStart = new Date(start);
   let vacationEnd = new Date(end);  
+
+  let weekdays = countCertainDays([0,6], vacationStart, vacationEnd)
+
   let calcDays = vacationEnd.getTime() - vacationStart.getTime();
 
   var daysTotal = Math.ceil(calcDays / (1000 * 3600 * 24));
-  console.log(daysTotal + ' dni urlopu');
+
+  let daysResult = (daysTotal - weekdays);
+
+  console.log(daysResult + ' dni urlopu');
 
  
-  return(daysTotal);
+  return(daysResult);
 
 }
