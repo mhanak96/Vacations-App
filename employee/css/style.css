@@ -13,6 +13,10 @@ body {
   color: var(--textColor);
 }
 
+* {
+  box-sizing: border-box;
+}
+
 .main {
   width: 100%;
   margin-left: auto;
@@ -172,6 +176,7 @@ body {
   margin: 2rem;
   font-size: 2rem;
   color: #ffffff;
+  overflow: auto;
 }
 
 table,

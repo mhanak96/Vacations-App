@@ -15,6 +15,10 @@ body {
   color: var(--textColor);
 }
 
+#tab {
+  overflow: auto;
+}
+
 #nav {
   font-size: 4rem;
   display: flex;
@@ -30,7 +34,7 @@ body {
   flex-wrap: wrap;
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 1300px) {
   #nav {
     margin: 2rem;
     justify-content: center;
