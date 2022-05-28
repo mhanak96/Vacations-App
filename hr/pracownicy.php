@@ -32,11 +32,11 @@ if(!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != '
 
   <body>
     <div id="nav">
-      <div id="logo">Logo</div>
+      <div id="logo"><img src="../employee/img/logo.png"></div>
       <div class="name">Baza pracowników</div>
       <div class="nav-btn">
         <button class="btn1">
-          <a class="nav-link" href="hr.php">Panel głowny</a>
+          <a class="nav-link" href="hr.php" >Panel główny</a>
         </button>
         <form action="../logout.php" method="post">
                 <a href="../index.php"><button class="btn1">Wyloguj</button></a>
@@ -44,7 +44,7 @@ if(!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != '
       </div>
     </div>
     <div class="box">
-      <div class="info">Pracownicy:</div>
+      <div class="info">Pracownicy</div>
       <div id="application">
         <div>
           <button class="btn3">Dodaj pracownika</button>
@@ -244,7 +244,7 @@ if(!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != '
           <label id="id_update">...</label>
         </div>
         <div class="modal-footer">
-          <input type="submit" id="crud-btn-update" class="submit-btn1" value="Zaktualizuj dane pracownika"></input>
+          <input type="submit" id="crud-btn-update" class="submit-btn1" value="Zaktualizuj dane"></input>
           <button id="close2" class="close-btn2">Zamknij</button>
           <label id="error">....</label>
           </div>

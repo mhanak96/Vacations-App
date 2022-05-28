@@ -1,0 +1,51 @@
+
+<!-- <script type="text/javascript">
+    var pausecontent = <?php echo json_encode($toArray);?>;
+
+    console.log(pausecontent);
+</script> -->
+
+  <div class="modal3">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h1>Szczegóły wniosku</h1>
+                        </div>
+                        <form>
+                        <div>
+                        <label for="" id="modal-user">Numer wniosku:</label>
+                        </div>
+                        <div>
+                        <label for="" id="modal-user">Imię i nazwisko:</label>
+                        </div>
+                        <div>
+                        <label for="" id="modal-data">Data urlopu:</label>
+                        </div>
+                        <div>
+                        <label for="" id="modal-days">Typ urlopu</label>
+                        </div>
+                        <div>
+                        <label for="" id="modal-deputy">Zastępstwo</label>
+                        </div>
+                        <div>
+                        <label for="" id="modal-status">Status</label>
+                        </div>
+                        <textarea></textarea>
+                        <div class="modal-footer">
+                        <input type="submit" class="submit-btn1">Aktualizuj wniosek</input>
+                        <input type="submit" class="submit-btn1">Odrzuć wniosek</input>
+                        </div>
+                        </form>
+                        <button id="close1" class="close-btn">Zamknij</button>
+                    </div>
+                </div>
+
+
+SELECT *FROM vacation_data where departament like '%Produkcja%' AND NOT id like '%1%';
+
+ <tr><td>${vacationType}	</td> <td>${vacationPeriod}	</td>  <td>${substitiute}	</td>  <td>${status}</td><td><a href="#">otworz</a></td></tr>
+
+ AND NOT id like '$id'
+
+ SELECT id, first_name, second_name FROM `vacation_data` WHERE departament LIKE '%Produkcja%' AND NOT id LIKE '%1%'
+
+     SELECT id, first_name, second_name FROM `vacation_data` WHERE departament LIKE '%Produkcja%' AND NOT id LIKE '%1%'
