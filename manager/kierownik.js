@@ -52,13 +52,17 @@ let statusValidate = function (status) {
     return "swai";
   }
 };
-
+const plusButton = document.querySelector(".plus");
+const minusButton = document.querySelector(".minus");
+const plusButton2 = document.querySelector(".plus2");
+const minusButton2 = document.querySelector(".minus2");
 //Insert data function
-function Insert_Data() {
+function Insert_Data(first = 0, second = 10) {
   var tableInsert = document.getElementById("datas");
   tableInsert.innerHTML = "";
   var tr = "";
-  table.forEach((x) => {
+
+  table.slice(first, second).forEach((x) => {
     tr += "<tr>";
     tr +=
       "<td>" +
@@ -81,11 +85,11 @@ function Insert_Data() {
   tableInsert.innerHTML += tr;
 }
 
-function Insert_Data_Workers() {
+function Insert_Data_Workers(first = 0, second = 10) {
   var tableInsertWorkers = document.getElementById("datas_works");
   tableInsertWorkers.innerHTML = "";
   var trs = "";
-  tableWorkersThird.forEach((x) => {
+  tableWorkersThird.slice(first, second).forEach((x) => {
     trs += "<tr>";
 
     trs +=
@@ -306,6 +310,62 @@ buttonAccept.addEventListener("click", function () {
     window.location.reload(true);
   });
 });
+
+//////// PAGINACJA
+
+let first = 0;
+let second = 10;
+const moveOn = (e) => {
+  if (e.target.innerHTML === "Starsze") {
+    first = first + 10;
+    second = second + 10;
+  } else {
+    first = first - 10;
+    second = second - 10;
+  }
+
+  if (!(table.length >= second)) {
+    second = table.length;
+    first = table.length - 10;
+  }
+
+  if (!(first >= 0)) {
+    first = 0;
+    second = 10;
+  }
+
+  Insert_Data(first, second);
+};
+
+const moveOn2 = (e) => {
+  console.log(tableWorkersThird, first, second);
+
+  if (e.target.innerHTML === "Starsze") {
+    first = first + 10;
+    second = second + 10;
+  } else {
+    first = first - 10;
+    second = second - 10;
+  }
+
+  if (!(tableWorkersThird.length >= second)) {
+    second = tableWorkersThird.length;
+    first = tableWorkersThird.length - 10;
+  }
+
+  if (!(first >= 0)) {
+    first = 0;
+    second = 10;
+  }
+
+  Insert_Data_Workers(first, second);
+};
+
+plusButton.addEventListener("click", moveOn);
+minusButton.addEventListener("click", moveOn);
+
+plusButton2.addEventListener("click", moveOn2);
+minusButton2.addEventListener("click", moveOn2);
 
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 

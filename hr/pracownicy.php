@@ -76,6 +76,7 @@ if(!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != '
 
           </tbody>
         </table>
+        <button class="minus">Nowsze</button><button class="plus">Starsze</button>
       </div>
     </div>
 
