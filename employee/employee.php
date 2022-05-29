@@ -20,7 +20,7 @@ if (!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Panel pracownika" />
     <meta name="keywords" content="Panel, pracownika" />
-    <link rel="shortcut icon" href="/employee/img/logo-karta.png">
+    <link rel="shortcut icon" href="../employee/img/logo-karta.png">
     <link rel="stylesheet" href="../global/external-resources/fontello-2881fecc/css/tw.css">
     <link rel="stylesheet" href="../status.css" type="text/css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -83,7 +83,7 @@ if (!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != 
 
                         </tbody>
                     </table>
-                    <button class="minus">Nowsze</button><button class="plus">Starsze</button>
+                    <button class="minus btn-anim">Nowsze</button><button class="plus btn-anim">Starsze</button>
                 </div>
             </div>
         </div>
@@ -125,21 +125,24 @@ if (!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != 
 
         <footer class="footer">
             <div class="containerFooter">
-                <p>Aplikacja Urlopowa:</p>
+                <div class="logo-footer">
+                    <img class="logo-footer-img" src="../employee/img/logo.png">
+                    <p>Aplikacja Urlopowa:</p>
+                </div>
                 <div class="person">
                     <p>Mateusz Hanak</p>
-                    <img id="#" src="img/linkedin.png" alt="linkedin">
-                    <img id="#" src="img/github.png" alt="github">
+                    <a href="https://www.linkedin.com/mwlite/in/mateuszhanak" target="blank"><img id="#" src="img/linkedin.png" alt="linkedin"></a>
+                    <a href="https://github.com/mhanak96" target="blank"> <img id="#" src="img/github.png" alt="github"></a>
                 </div>
                 <div class="person">
                     <p>Robert Śliwiński</p>
-                    <img id="#" src="img/linkedin.png" alt="linkedin">
-                    <img id="#" src="img/github.png" alt="github">
+                    <a href="https://www.linkedin.com/in/robert-%C5%9Bliwi%C5%84ski-602b68167" target="blank"><img id="#" src="img/linkedin.png" alt="linkedin"></a>
+                    <a href="https://github.com/R-Sliw?tab=repositories" target="blank"> <img id="#" src="img/github.png" alt="github"></a>
                 </div>
                 <div class="person">
                     <p>Łukasz Juchniewicz</p>
-                    <img id="#" src="img/linkedin.png" alt="linkedin">
-                    <img id="#" src="img/github.png" alt="github">
+                    <a href="https://www.linkedin.com/in/lukasz-juchniewicz/" target="blank"><img id="#" src="img/linkedin.png" alt="linkedin"></a>
+                    <a href="https://github.com/juchas019" target="blank"> <img id="#" src="img/github.png" alt="github"></a>
                 </div>
             </div>
         </footer>

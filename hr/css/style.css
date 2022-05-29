@@ -19,17 +19,17 @@ body {
 
 #nav {
   font-size: 4rem;
-    display: flex;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    border-bottom: 0.2rem solid white;
-    min-height: 6rem;
-    flex-direction: row;
-    justify-content: space-between;
-    letter-spacing: 0.2rem;
-    color: #412728;
-    font-weight: 700;
-    flex-wrap: wrap;
+  display: flex;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  border-bottom: 0.2rem solid white;
+  min-height: 6rem;
+  flex-direction: row;
+  justify-content: space-between;
+  letter-spacing: 0.2rem;
+  color: #412728;
+  font-weight: 700;
+  flex-wrap: wrap;
 }
 
 .nav-btn {
@@ -40,14 +40,14 @@ body {
   flex-wrap: wrap;
   gap: 2rem;
   width: 40rem;
-  justify-content: right;
+  justify-content: center;
   align-items: baseline;
 }
 
 #logo {
   width: 40rem;
   margin-left: 4rem;
-  
+
 }
 
 .name {
@@ -73,6 +73,8 @@ body {
   text-decoration: none;
   text-shadow: 0px 1px 0px #854629;
   font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
 }
 
 .btn1:hover {
@@ -97,18 +99,6 @@ body {
   box-shadow: inset 0px 0px 8px -2px rgba(66, 68, 90, 1);
 }
 
-@media screen and (max-width: 1300px) {
-
-  #nav,
-  #logo,
-  .name,
-  .btn1 {
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    justify-content: center;
-  }
-}
 
 .box {
   background-image: linear-gradient(to right, #e2b659, #d9a754, #cf984f, #c48a4b, #b87c47);
@@ -165,7 +155,7 @@ body {
 
 .btn2,
 .btn3 {
-  height: 4rem;
+  height: 6rem;
   width: 30rem;
   box-shadow: inset 0px 1px 0px 0px #5a1c05;
   background: linear-gradient(to bottom, #412728 5%, #543a3a 100%);
@@ -180,6 +170,8 @@ body {
   text-decoration: none;
   text-shadow: 0px 1px 0px #854629;
   font-weight: 700;
+  font-size: 1.8rem;
+  letter-spacing: 2px;
 }
 
 .btn2:hover,
@@ -205,7 +197,7 @@ th,
 td {
   border-collapse: collapse;
   padding: 1rem;
-  
+
 }
 
 
@@ -220,7 +212,7 @@ table {
   color: var(--textColor);
 }
 
-.tab{
+.tab {
   overflow: auto;
 }
 
@@ -275,7 +267,7 @@ table {
   padding: 20px;
   margin: auto;
   width: 40rem;
-  height: 50rem;
+  height: 53rem;
   -webkit-animation-name: animatetop;
   -webkit-animation-duration: 0.4s;
   animation-name: animatetop;
@@ -296,31 +288,31 @@ table {
 .close-btn,
 .close-btn2 {
   float: right;
-    width: 12rem;
-    height: 4rem;
-    margin: 1rem;
-    position: absolute;
-    right: 20rem;
-    bottom: 0;
-    box-shadow: inset 0px 1px 0px 0px #cf866c;
-    background: linear-gradient(to bottom, #d0451b 5%, #bc3315 100%);
-    background-color: #d0451b;
-    border-radius: 3rem;
-    border: 1px solid #942911;
-    display: inline-block;
-    cursor: pointer;
-    color: #ffffff;
-    font-size: 13px;
-    padding: 6px 24px;
-    text-decoration: none;
-    text-shadow: 0px 1px 0px #854629;
-    font-weight: 700;
+  width: 12rem;
+  height: 4rem;
+  margin: 1rem;
+  position: absolute;
+  right: 20rem;
+  bottom: 0;
+  box-shadow: inset 0px 1px 0px 0px #cf866c;
+  background: linear-gradient(to bottom, #d0451b 5%, #bc3315 100%);
+  background-color: #d0451b;
+  border-radius: 3rem;
+  border: 1px solid #942911;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 13px;
+  padding: 6px 24px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #854629;
+  font-weight: 700;
 }
 
 .close-btn:hover,
 .close-btn2:hover {
   background: linear-gradient(to bottom, #bc3315 5%, #d0451b 100%);
-    background-color: #bc3315;
+  background-color: #bc3315;
 }
 
 .submit-btn1 {
@@ -478,4 +470,146 @@ ol {
   opacity: 1;
   visibility: visible;
   z-index: 5;
+}
+
+.plus,
+.minus,
+.plus2,
+.minus2 {
+  box-shadow: inset 0px 1px 0px 0px #5a1c05;
+  margin: 10px 10px 0px 0px;
+  background: linear-gradient(to bottom, #412728 5%, #543a3a 100%);
+  background-color: #412728;
+  border-radius: 1rem;
+  border: 1px solid #430202;
+  cursor: pointer;
+  color: rgb(232, 229, 229);
+  font-size: 1.4rem;
+  padding: 8px;
+  text-shadow: 0px 1px 0px #854629;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.plus:hover,
+.minus:hover,
+.plus2:hover,
+.minus2:hover {
+  background: linear-gradient(to bottom, #543a3a 5%, #412728 100%);
+  background-color: #3b0e04;
+}
+
+/* Footer */
+.containerFooter {
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 1.8rem;
+  width: auto;
+  background-color: var(--infoColor);
+  color: var(--textColor);
+  margin: auto;
+}
+
+.logo-footer {
+  display: flex;
+}
+
+.logo-footer .logo-footer-img {
+  height: 40px;
+  margin-right: 10px;
+  position: relative;
+  margin-top: 5px;
+}
+
+.person {
+  width: auto;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.person img {
+  padding: 4px;
+}
+
+.person img:hover {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1300px) {
+
+  #nav,
+  #logo,
+  .name,
+  .btn1 {
+    padding: 0;
+    text-align: center;
+    justify-content: center;
+    margin: 10px 0px 7px 0px;
+  }
+
+  .tab {
+    font-size: 1.4rem;
+  }
+
+  input,
+  select {
+    height: 2.5rem;
+    font-size: 1.3rem;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .containerFooter {
+    font-size: 1.2rem;
+    margin-left: 3px;
+  }
+
+  .logo-footer .logo-footer-img {
+    height: 20px;
+    margin-right: 10px;
+    position: relative;
+    margin-top: 13px;
+    margin-left: 5px;
+
+  }
+
+  input,
+  select {
+    margin-bottom: 3px;
+    height: 1.6rem;
+    font-size: 1rem;
+  }
+
+  .tab {
+    font-size: 1rem;
+  }
+
+  table,
+  th,
+  td {
+    border-collapse: collapse;
+    padding: 5px;
+  }
+
+  td {
+    padding: 1px;
+  }
+}
+
+
+@media screen and (max-width: 500px) {
+  .modal-content {
+
+    padding: 20px;
+    margin: auto;
+    width: 35rem;
+    height: 57rem;
+  }
+
+  .modal-content h1 {
+    font-size: 1.5em;
+  }
 }

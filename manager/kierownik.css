@@ -45,7 +45,7 @@ body {
   margin-left: 4rem;
 }
 
-.hi{
+.hi {
   padding-left: 8rem;
 }
 
@@ -66,6 +66,8 @@ body {
   text-decoration: none;
   text-shadow: 0px 1px 0px #854629;
   font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
 }
 
 .btn1:hover {
@@ -134,7 +136,7 @@ body {
 }
 
 .btn2 {
-  height: 4rem;
+  height: 6rem;
   width: 30rem;
   box-shadow: inset 0px 1px 0px 0px #5a1c05;
   margin-right: 3rem;
@@ -150,6 +152,8 @@ body {
   text-decoration: none;
   text-shadow: 0px 1px 0px #854629;
   font-weight: 700;
+  font-size: 1.8rem;
+  letter-spacing: 2px;
 }
 
 .btn2:hover {
@@ -255,7 +259,7 @@ table {
 
 .close-btn:hover {
   background: linear-gradient(to bottom, #bc3315 5%, #d0451b 100%);
-    background-color: #bc3315;
+  background-color: #bc3315;
 }
 
 .submit-btn1 {
@@ -381,20 +385,7 @@ ol {
   font-weight: bold;
 }
 
-@media screen and (max-width: 500px) {
-  .modal-content {
 
-    padding: 20px;
-    margin: auto;
-    width: 30rem;
-    height: 54rem;
-
-  }
-
-  .modal-content h1 {
-    font-size: 1.5em;
-  }
-}
 
 /* Scroll UP */
 #button {
@@ -437,4 +428,100 @@ ol {
   opacity: 1;
   visibility: visible;
   z-index: 5;
+}
+
+.plus,
+.minus,
+.plus2,
+.minus2 {
+  box-shadow: inset 0px 1px 0px 0px #5a1c05;
+  margin: 10px 10px 0px 0px;
+  background: linear-gradient(to bottom, #412728 5%, #543a3a 100%);
+  background-color: #412728;
+  border-radius: 1rem;
+  border: 1px solid #430202;
+  cursor: pointer;
+  color: rgb(232, 229, 229);
+  font-size: 1.4rem;
+  padding: 8px;
+  text-shadow: 0px 1px 0px #854629;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.plus:hover,
+.minus:hover,
+.plus2:hover,
+.minus2:hover {
+  background: linear-gradient(to bottom, #543a3a 5%, #412728 100%);
+  background-color: #3b0e04;
+}
+
+/* Footer */
+.containerFooter {
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 1.8rem;
+  width: auto;
+  background-color: var(--infoColor);
+  color: var(--textColor);
+  margin: auto;
+}
+
+.logo-footer {
+  display: flex;
+}
+
+.logo-footer .logo-footer-img {
+  height: 40px;
+  margin-right: 10px;
+  position: relative;
+  margin-top: 5px;
+}
+
+.person {
+  width: auto;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.person img {
+  padding: 4px;
+}
+
+.person img:hover {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 500px) {
+  .modal-content {
+
+    padding: 20px;
+    margin: auto;
+    width: 35rem;
+    height: 54rem;
+  }
+
+  .modal-content h1 {
+    font-size: 1.5em;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .containerFooter {
+    font-size: 1.2rem;
+    margin-left: 3px;
+  }
+
+  .logo-footer .logo-footer-img {
+    height: 20px;
+    margin-right: 10px;
+    position: relative;
+    margin-top: 13px;
+    margin-left: 5px;
+
+  }
 }
