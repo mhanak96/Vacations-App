@@ -1,12 +1,13 @@
 'use strict'
+
+// ajax przy sprawdzaniu czy wprowadzone przy logowaniu dane są poprawne 
+
 var script = document.createElement('script');
 script.src = 'https://code.jquery.com/jquery-3.4.1.min.js';
 script.type = 'text/javascript';
 document.getElementsByTagName('head')[0].appendChild(script);
 
 const button = document.getElementById('loggin-button');
-
-
 
 button.addEventListener('click', function(){
     document.getElementById('alert').classList.add('hidden');
@@ -19,7 +20,6 @@ button.addEventListener('click', function(){
         }
     })
     .done(function (msg) {
-        //alert("Data Saved: " + msg);
         switch(msg){
             case "correct":
                 document.forms["form-login"].submit();
@@ -35,8 +35,5 @@ button.addEventListener('click', function(){
                 document.getElementById('error').textContent = "Error!!!";
         }
         
-        
-       
-        //document.forms["form-login"].submit();
     });
 });

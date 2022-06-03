@@ -87,6 +87,8 @@ $("#daterangepicker").daterangepicker(
   }
 );
 
+// sprawdzenie czy w zakresie wybranych dni nie ma sobót i niedziel 
+// https://stackoverflow.com/questions/25562173/calculate-number-of-specific-weekdays-between-dates
 
 function countCertainDays( days, d0, d1 ) {
   var ndays = 1 + Math.round((d1-d0)/(24*3600*1000));
@@ -107,7 +109,7 @@ function countDays(start, end){
 
   let daysResult = (daysTotal - weekdays);
 
-  console.log(daysResult + ' dni urlopu');
+
 
  
   return(daysResult);

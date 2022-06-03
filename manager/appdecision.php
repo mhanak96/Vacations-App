@@ -1,4 +1,5 @@
 <?php
+// pobranie informacji o konkretnym wniosku z bazy danych 
 $connection = mysqli_connect('localhost','root','','application');
 
 $app_ID = $_COOKIE['clickedID'];
@@ -12,6 +13,7 @@ $app_info = mysqli_fetch_all($sel_app_info,  MYSQLI_NUM);
 echo json_encode($app_info);
 
 exit();
+
 
 
 ?>

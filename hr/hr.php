@@ -1,3 +1,5 @@
+<!-- ===================================================================================================== -->
+<!-- Rozpoczęcie sesji + wyrzucenie osoby nieuprawnionej -->
 <?php
 session_start();
 
@@ -16,9 +18,9 @@ if (!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Panel Kadr" />
   <meta name="keywords" content="Panel, Kadry" />
-  <link rel="shortcut icon" href="../img/logo-karta.png">
-  <link rel="stylesheet" href="../css/hr/style-hr.css" type="text/css" />
-  <link rel="stylesheet" href="../css/global/status.css" type="text/css" />
+  <link rel="shortcut icon" href="../res/img/logo-karta.png">
+  <link rel="stylesheet" href="../res/css/hr/style-hr.css" type="text/css" />
+  <link rel="stylesheet" href="../res/css/global/status.css" type="text/css" />
   <link rel="stylesheet" href="../global/external-resources/fontello-2881fecc/css/tw.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,7 +32,7 @@ if (!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != 
 <body>
   <div id="container">
     <div id="nav">
-    <div id="logo"><img src="../img/logo.png"></div>
+    <div id="logo"><img src="../res/img/logo.png"></div>
       <div class='name' id="welcome">Witaj ${firstName}</div>
       <div class="nav-btn">
         <form action="../main/logout.php" method="post">
@@ -111,7 +113,7 @@ if (!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != 
     </div>
   </div>
 
-  <!--Wniosek urlopowy-->
+  <!--Modal z wnioskiem urlopowym-->
   <div class="modal">
     <div class="modal-content">
       <div class="modal-header">
@@ -142,7 +144,7 @@ if (!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != 
       <button id="close" class="close-btn">Zamknij</button>
     </div>
   </div>
-  <!-- Ocena wniosku -->
+  <!-- Modal oceny wniosku przez HR -->
   <div class="modal3 smodal hidden">
     <div class="modal-content">
       <div class="modal-header">
@@ -166,7 +168,7 @@ if (!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != 
       </div>
     </div>
   </div>
-  <!-- Informacje o wniosku -->
+  <!-- Modal informacji o wniosku -->
   <div class="modal4 smodal hidden">
     <div class="modal-content">
       <div class="modal-header">
@@ -189,32 +191,32 @@ if (!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != 
   
   </div>
   <footer class="footer">
-  <div class="containerFooter">
-      <div class="logo-footer">
-        <img class="logo-footer-img" src="../img/logo.png">
-        <p>Aplikacja Urlopowa:</p>
-      </div>
-      <div class="person">
-        <p>Mateusz Hanak</p>
-        <a href="https://www.linkedin.com/mwlite/in/mateuszhanak" target="blank"><img id="#" src="../img/linkedin.png" alt="linkedin"></a>
-        <a href="https://github.com/mhanak96" target="blank"> <img id="#" src="../img/github.png" alt="github"></a>
-      </div>
-      <div class="person">
-        <p>Robert Śliwiński</p>
-        <a href="https://www.linkedin.com/in/robert90-sliwinski90" target="blank"><img id="#" src="../img/linkedin.png" alt="linkedin"></a>
-        <a href="https://github.com/R-Sliw?tab=repositories" target="blank"> <img id="#" src="../img/github.png" alt="github"></a>
-      </div>
-      <div class="person">
-        <p>Łukasz Juchniewicz</p>
-        <a href="https://www.linkedin.com/in/lukasz-juchniewicz/" target="blank"><img id="#" src="../img/linkedin.png" alt="linkedin"></a>
-        <a href="https://github.com/juchas019" target="blank"> <img id="#" src="../img/github.png" alt="github"></a>
-      </div>
-    </div>
-  </footer>
+            <div class="containerFooter">
+                <div class="logo-footer">
+                    <img class="logo-footer-img" src="../res/img/logo.png">
+                    <p>Aplikacja Urlopowa:</p>
+                </div>
+                <div class="person">
+                    <p>Mateusz Hanak</p>
+                    <a href="https://www.linkedin.com/mwlite/in/mateuszhanak" target="blank"><img id="#" src="../res/img/linkedin.png" alt="linkedin"></a>
+                    <a href="https://github.com/mhanak96" target="blank"> <img id="#" src="../res/img/github.png" alt="github"></a>
+                </div>
+                <div class="person">
+                    <p>Robert Śliwiński</p>
+                    <a href="https://www.linkedin.com/in/robert90-sliwinski90" target="blank"><img id="#" src="../res/img/linkedin.png" alt="linkedin"></a>
+                    <a href="https://github.com/R-Sliw?tab=repositories" target="blank"> <img id="#" src="../res/img/github.png" alt="github"></a>
+                </div>
+                <div class="person">
+                    <p>Łukasz Juchniewicz</p>
+                    <a href="https://www.linkedin.com/in/lukasz-juchniewicz/" target="blank"><img id="#" src="../res/img/linkedin.png" alt="linkedin"></a>
+                    <a href="https://github.com/juchas019" target="blank"> <img id="#" src="../res/img/github.png" alt="github"></a>
+                </div>
+            </div>
+        </footer>
   <a id="button"></a>
 
 
-  <script type="text/javascript" src="../global/js/jquery.js"></script>
+  <script type="text/javascript" src="../global/external-resources/jquery.js"></script>
 
   
 
@@ -222,7 +224,8 @@ if (!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != 
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
   <script type="text/javascript" src="../global/external-resources/daterangepicker-master/daterangepicker.js"></script>
   <script src="../global/external-resources/scrolUp.js"></script>
-
+<!-- ===================================================================================================== -->
+<!-- Część techniczna wniosku  -->
   <?php
   $id = $_SESSION['session_data']['0'];
   $worker_depart = $_SESSION['session_data']['6'];
@@ -242,6 +245,7 @@ if (!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != 
   $collegues_join = array_merge(...$name_collegues);
 
   ?>
+<!-- ===================================================================================================== -->
 
   <!-- Przekazanie danych z PHP do JS -->
   <script type="text/javascript">
@@ -251,10 +255,10 @@ if (!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != 
     var collegues = <?php echo json_encode($collegues_join); ?>;
   </script>
 
-  <script src="../js/hr/windowhr.js"></script>
-  <script type="text/javascript" src="../js/hr/hrscript.js"></script>
-  <script type="text/javascript" src="../global/js/logout.js"></script>
-  <script type="text/javascript" src="../js/hr/holidayrqhr.js"></script>
+  <script src="../res/js/hr/windowhr.js"></script>
+  <script type="text/javascript" src="../res/js/hr/hrscript.js"></script>
+  <script type="text/javascript" src="../global/logout.js"></script>
+  <script type="text/javascript" src="../res/js/hr/holidayrqhr.js"></script>
 
 </body>
 

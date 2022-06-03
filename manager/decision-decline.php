@@ -1,4 +1,6 @@
 <?php
+// odmowa akceptacji przez kierownika i zwrot liczby wziętych dni wnioskującemu
+
 $connection = mysqli_connect('localhost','root','','application');
 
 $app_ID = $_COOKIE['clickedID'];

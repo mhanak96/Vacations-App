@@ -4,8 +4,6 @@ const button = document.getElementById('submit-request');
 
 button.addEventListener('click', function(){
     sessionStorage.setItem('tempCorrectResult', correctResult);
-    sessionStorage.setItem('tempVacOn', result);
-    
     $.ajax({
         type: "POST",
         url: "../main/holiday-request.php",
@@ -34,7 +32,9 @@ button.addEventListener('click', function(){
             default:
                 document.getElementById('error').textContent = "Correct2!";
                 window.location.reload(true);
-                
         }
+        
+       
+        
     });
 });

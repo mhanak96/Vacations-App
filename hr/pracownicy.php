@@ -1,3 +1,5 @@
+<!-- ===================================================================================================== -->
+<!-- rozpoczęcie sesji wyrzucenie osób nieuprawnionych -->
 <?php
 session_start();
 
@@ -7,6 +9,7 @@ if (!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != 
 }
 
 ?>
+<!-- ===================================================================================================== -->
 
 <!DOCTYPE html>
 <html lang="pl">
@@ -19,7 +22,7 @@ if (!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != 
   <meta name="description" content="Panel Kadr" />
   <meta name="keywords" content="Panel, Kadry" />
 
-  <link rel="stylesheet" href="../css/hr/style-hr.css" type="text/css" />
+  <link rel="stylesheet" href="../res/css/hr/style-hr.css" type="text/css" />
   <link rel="stylesheet" href="../global/external-resources/fontello-2881fecc/css/tw.css" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -29,7 +32,7 @@ if (!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != 
 
 <body>
   <div id="nav">
-  <div id="logo"><img src="../img/logo.png"></div>
+  <div id="logo"><img src="../res/img/logo.png"></div>
     <div class="name">Baza pracowników</div>
     <div class="nav-btn">
       <button class="btn1">
@@ -54,6 +57,8 @@ if (!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != 
     $sel_crud = mysqli_query($connection, " SELECT * FROM vacation_data") or exit(mysqli_error($connection));
     $table_crud = mysqli_fetch_all($sel_crud, MYSQLI_ASSOC);
     ?>
+
+    
     <div class="tab">
       <table>
         <tr>
@@ -164,9 +169,9 @@ if (!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != 
   <script type="text/javascript">
     var table_crud = <?php echo json_encode($table_crud); ?>;
   </script>
-  <script type="text/javascript" src="../global/js/jquery.js"></script>
-  <script type="text/javascript" src="../js/hr/window2.js"></script>
-  <script type="text/javascript" src="../js/hr/crud.js"></script>
+  <script type="text/javascript" src="../global/external-resources/jquery.js"></script>
+  <script type="text/javascript" src="../res/js/hr/window2.js"></script>
+  <script type="text/javascript" src="../res/js/hr/crud.js"></script>
 </body>
 
 </html>

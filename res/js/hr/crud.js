@@ -1,5 +1,10 @@
+// ajax dla cruda 
+
 const button = document.getElementById("crud-submit");
 const buttonUpdate = document.getElementById("crud-btn-update");
+
+
+// dodanie pracownika do bazy 
 
 button.addEventListener("click", function () {
   console.log("Działam");
@@ -37,6 +42,8 @@ button.addEventListener("click", function () {
     }
   });
 });
+
+// wczytanie tabeli wniosków 
 
 console.log(table_crud);
 function Insert_Data(first = 0, second = 10) {
@@ -82,11 +89,11 @@ function Insert_Data(first = 0, second = 10) {
     tr += "</tr>";
   });
   tableInsert2.innerHTML += tr;
-  //Help......
 }
 
 Insert_Data();
 
+// usunięcie pracownika 
 function database_remove(x) {
   console.log("Działam - usunięto!");
   $.ajax({
@@ -116,6 +123,7 @@ function database_remove(x) {
   });
 }
 
+// wyświetlenie modala aktualizacji danych pracownika 
 function database_update_toogle(x) {
   const updLabel = document.getElementById("id_update");
   const modal3 = document.querySelector(".modal3");
@@ -123,6 +131,7 @@ function database_update_toogle(x) {
   updLabel.textContent = x;
 }
 
+// ajax dla aktualizacji danych pracownika 
 buttonUpdate.addEventListener("click", function () {
   $.ajax({
     type: "POST",

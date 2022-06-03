@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+<!-- Rozpoczynanie sesji i wyrzucenie użytkownika nie będącego pracownikiem do ekranu logowania -->
+<!-- ===================================================================================================== -->
 <?php
 session_start();
 
@@ -7,10 +8,9 @@ if (!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != 
     exit();
 }
 
-
 ?>
-
-
+<!-- ===================================================================================================== -->
+<!DOCTYPE html>
 <html lang="pl">
 
 <head>
@@ -20,11 +20,11 @@ if (!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != 
     <title>Panel kierwoniczy</title>
     <meta name="description" content="Panel kierwoniczy" />
     <meta name="keywords" content="Panel, kierwoniczy" />
-    <link rel="shortcut icon" href="../img/logo-karta.png">
-    <link rel="stylesheet" href="../css/manager/style-manager.css" type="text/css" />
+    <link rel="shortcut icon" href="../res/img/logo-karta.png">
+    <link rel="stylesheet" href="../res/css/manager/style-manager.css" type="text/css" />
 
     <link rel="stylesheet" href="" type="text/css" />
-    <link rel="stylesheet" href="../css/global/status.css" type="text/css" />
+    <link rel="stylesheet" href="../res/css/global/status.css" type="text/css" />
     <link rel="stylesheet" href="../global/external-resources/fontello-2881fecc/css/tw.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,7 +41,7 @@ if (!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != 
 
     <div id="container">
         <div id="nav">
-            <div id="logo"><img src="../img/logo.png"></div>
+        <div id="logo"><img src="../res/img/logo.png"></div>
             <div id="welcome" class='hi'>Witaj ${firstName}</div>
             <form action="../main/logout.php" method="post">
                 <a href="../index.php"><button class="btn1" id="btn-logout">Wyloguj</button></a>
@@ -65,7 +65,6 @@ if (!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != 
                 <div class="info">Moje wnioski urlopowe</div>
                 <div>
                     <div id="application">
-                        <!-- <div class="hist">Historia wniosków:</div> -->
                         <div><button id="modal-btn" class="btn2">Złóż nowy wniosek</button></div>
                     </div>
                     <div id="tab">
@@ -92,7 +91,6 @@ if (!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != 
                 <div class="info">Wnioski pracowników</div>
                 <div>
                     <div id="application">
-                        <!-- <div class="hist">Historia wniosków:</div> -->
                     </div>
                     <div id="tab">
                         <table>
@@ -114,13 +112,13 @@ if (!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != 
                     </div>
                 </div>
             </div>
-            <!--okno-->
+            <!--Modal na wnioski urlopowe-->
             <div class="modal">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h1>Nowy wniosek urlopowy</h1>
                     </div>
-                    <!-- FORM-->
+                    <!-- Formularz-->
                     <form class="request-form" action="../main/holiday-request.php" method="post">
                         <div class="inputs">
                             <label>Typ urlopu:</label>
@@ -134,7 +132,6 @@ if (!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != 
                             <label for="">Wybierz datę:</label><input type="text" id="daterangepicker" name="date-picker" class="form-control">
                             <label>Zastępstwo:</label>
                             <select name="deputy" id="deputy">
-
                             </select>
                             <label for="">Ewentualny komentarz:</label><textarea name="comment" id="comment" cols="30" rows="10"></textarea>
                         </div>
@@ -147,7 +144,7 @@ if (!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != 
                 </div>
             </div>
 
-
+<!-- modal na liczbę osób pracujących -->
             <div class="modal2">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -165,7 +162,7 @@ if (!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != 
                     </div>
                 </div>
             </div>
-
+<!-- modal służący do oceny wniosku -->
             <div class="modal3 smodal hidden">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -197,7 +194,7 @@ if (!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != 
                 </form>
             </div>
         </div>
-
+<!-- modal pokazujący historię wniosku - brak możliwości jego rozpatrzenia -->
         <div class="modal4 smodal hidden">
             <div class="modal-content">
                 <div class="modal-header">
@@ -220,50 +217,54 @@ if (!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != 
         </div>
     </div>
     <footer class="footer">
-  <div class="containerFooter">
-      <div class="logo-footer">
-        <img class="logo-footer-img" src="../img/logo.png">
-        <p>Aplikacja Urlopowa:</p>
-      </div>
-      <div class="person">
-        <p>Mateusz Hanak</p>
-        <a href="https://www.linkedin.com/mwlite/in/mateuszhanak" target="blank"><img id="#" src="../img/linkedin.png" alt="linkedin"></a>
-        <a href="https://github.com/mhanak96" target="blank"> <img id="#" src="../img/github.png" alt="github"></a>
-      </div>
-      <div class="person">
-        <p>Robert Śliwiński</p>
-        <a href="https://www.linkedin.com/in/robert90-sliwinski90" target="blank"><img id="#" src="../img/linkedin.png" alt="linkedin"></a>
-        <a href="https://github.com/R-Sliw?tab=repositories" target="blank"> <img id="#" src="../img/github.png" alt="github"></a>
-      </div>
-      <div class="person">
-        <p>Łukasz Juchniewicz</p>
-        <a href="https://www.linkedin.com/in/lukasz-juchniewicz/" target="blank"><img id="#" src="../img/linkedin.png" alt="linkedin"></a>
-        <a href="https://github.com/juchas019" target="blank"> <img id="#" src="../img/github.png" alt="github"></a>
-      </div>
-    </div>
-  </footer>
+            <div class="containerFooter">
+                <div class="logo-footer">
+                    <img class="logo-footer-img" src="../res/img/logo.png">
+                    <p>Aplikacja Urlopowa:</p>
+                </div>
+                <div class="person">
+                    <p>Mateusz Hanak</p>
+                    <a href="https://www.linkedin.com/mwlite/in/mateuszhanak" target="blank"><img id="#" src="../res/img/linkedin.png" alt="linkedin"></a>
+                    <a href="https://github.com/mhanak96" target="blank"> <img id="#" src="../res/img/github.png" alt="github"></a>
+                </div>
+                <div class="person">
+                    <p>Robert Śliwiński</p>
+                    <a href="https://www.linkedin.com/in/robert90-sliwinski90" target="blank"><img id="#" src="../res/img/linkedin.png" alt="linkedin"></a>
+                    <a href="https://github.com/R-Sliw?tab=repositories" target="blank"> <img id="#" src="../res/img/github.png" alt="github"></a>
+                </div>
+                <div class="person">
+                    <p>Łukasz Juchniewicz</p>
+                    <a href="https://www.linkedin.com/in/lukasz-juchniewicz/" target="blank"><img id="#" src="../res/img/linkedin.png" alt="linkedin"></a>
+                    <a href="https://github.com/juchas019" target="blank"> <img id="#" src="../res/img/github.png" alt="github"></a>
+                </div>
+            </div>
+        </footer>
     <a id="button"></a>
     <script src="../global/external-resources/scrolUp.js"></script>
-    <?php
 
+    <!-- ===================================================================================================== -->
+    <!-- Część techniczna nawiązanie połączenia z bazą danych -->
+    <?php
+    // pobranie id i komórki zalogowanego użytkownika
     $id = $_SESSION['session_data']['0'];
     $worker_depart = $_SESSION['session_data']['6'];
 
 
     $connection = mysqli_connect('localhost', 'root', '', 'application');
 
+    // pobranie histori wniosków danego użytkownika
     $sel_vac_history = mysqli_query($connection, " SELECT application_id,type,start_date,end_date,replacement,status FROM `vacation_log` WHERE id='$id' ORDER BY application_id DESC") or exit(mysqli_error($connection));
 
     $vac_history = mysqli_fetch_all($sel_vac_history, MYSQLI_ASSOC);
 
-    //workers identity selector 
+    //sprawdzenie czy pracownik ma współpracowników 
 
     $sel_vac_workers = mysqli_query($connection, " SELECT id FROM `vacation_data` WHERE departament like '$worker_depart' AND NOT id like '$id'") or exit(mysqli_error($connection));
 
     $vac_workers = mysqli_fetch_all($sel_vac_workers,  MYSQLI_NUM);
 
 
-
+    // zabezpieczenie się przed błędem na wypadek braku pracowników 
     if (empty($vac_workers[0])) {
         $workers_join = "brak pracowikow";
         $arr = "brak pracowników";
@@ -272,12 +273,13 @@ if (!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != 
     } else {
         $workers_join = array_merge(...$vac_workers);
         $arr = implode(",", $workers_join);
-        //workers history selector
+        //pobranie historii wniosków pracowników podlegających kierownikowi 
 
         $sel_vac_workers_history = mysqli_query($connection, " SELECT * FROM `vacation_log` WHERE id in ($arr) ORDER BY application_id DESC") or exit(mysqli_error($connection));
 
         $vac_workers_history = mysqli_fetch_all($sel_vac_workers_history, MYSQLI_NUM);
 
+        // pobranie imion pracowników w celu wykorzystania ich w polu wyboru jako zastępców 
         $sel_collegues = mysqli_query($connection, "SELECT first_name FROM `vacation_data` WHERE departament like '$worker_depart' AND NOT id like $id") or exit(mysqli_error($connection));
 
         $name_collegues  = mysqli_fetch_all($sel_collegues, MYSQLI_NUM);
@@ -285,14 +287,12 @@ if (!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != 
         $collegues_join = array_merge(...$name_collegues);
     }
 
-
-
-
-
-
     ?>
 
-    <script type="text/javascript" src="../js/manager/window.js"></script>
+    <!-- ===================================================================================================== -->
+
+    <!-- przekazanie informacji z PHP do JS -->
+    <script type="text/javascript" src="../res/js/manager/window.js"></script>
     <script type="text/javascript">
         var pausecontent = <?php echo json_encode($_SESSION['session_data']); ?>;
         var table = <?php echo json_encode($vac_history); ?>;
@@ -302,10 +302,10 @@ if (!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != 
         var collegues = <?php echo json_encode($collegues_join); ?>;
     </script>
 
-    <script type="text/javascript" src="../js/manager/kierownik.js"></script>
-    <script type="text/javascript" src="../global/js/logout.js"></script>
-    <script type="text/javascript" src="../global/js/jquery.js"></script>
-    <script type="text/javascript" src="../js/manager/managerquery.js"></script>
+    <script type="text/javascript" src="../res/js/manager/kierownik.js"></script>
+    <script type="text/javascript" src="../global/logout.js"></script>
+    <script type="text/javascript" src="../global/external-resources/jquery.js"></script>
+    <script type="text/javascript" src="../res/js/manager/managerquery.js"></script>
 
 </body>
 

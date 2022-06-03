@@ -1,4 +1,5 @@
 <?php
+// aprobata wniosku przez kierownika
 $connection = mysqli_connect('localhost','root','','application');
 
 $app_ID = $_COOKIE['clickedID']; 

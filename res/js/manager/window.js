@@ -85,6 +85,7 @@ function out(start, end, label){
   }
 };
 
+// obliczenie czy w zakresie dni znajdują się soboty i niedziele: https://stackoverflow.com/questions/25562173/calculate-number-of-specific-weekdays-between-dates
 
 
 function countCertainDays( days, d0, d1 ) {
@@ -106,7 +107,6 @@ function countDays(start, end){
 
   let daysResult = (daysTotal - weekdays);
 
-  console.log(daysResult + ' dni urlopu');
 
  
   return(daysResult);

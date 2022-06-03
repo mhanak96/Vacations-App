@@ -12,6 +12,9 @@ session_start();
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
 </head>
 <body>
+
+<!-- ===================================================================================================== -->
+<!-- cześć techniczna - sprawdzenie poprawności maila i hasła oraz przyporządkowanie użytkownika do odpowiedniego panelu -->
 <?php
 
 
@@ -25,15 +28,6 @@ session_start();
  
  $_SESSION['session_data'] = $toArray;
   
- /*$toArray = mysqli_fetch_array($select);
- 
-  
-  */
-
-
- 
-
- 
     switch($toArray[5]){
     case "Pracownik":
         header("Location: ../employee/employee.php");
@@ -50,14 +44,9 @@ session_start();
     default:
         echo('error - no such role!');
     }
-
-    
-  
-    
 ?>
 
-
-
+<!-- ===================================================================================================== -->
 
 </body>
 </html>

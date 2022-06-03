@@ -1,12 +1,6 @@
+<!-- wniosek Kierownika oraz pracownika HR o akceptacje jego wniosku -->
 <?php
 session_start();
-
-
-// $vacation = $_POST['vacation'];
-// $datarange =  $_POST['datarange'];
-// $deputy = $_POST['deputy'];
-// $comment = $_POST['comment'];
-
 
 
 $id = $_SESSION['session_data']['0'];
@@ -20,12 +14,6 @@ $comment = $_POST['comment'];
 
 $vacTotal = $_POST['vacTotal'];
 $vacOn = $_POST['vacOn'];
-
-// $type = $_POST['vacation'];
-// $datePicker = $_POST['date-picker'];
-// $deputy = $_POST['deputy'];
-// $comment = $_POST['comment'];
-
 
 
 $dates = explode("-", $datePicker);
@@ -43,7 +31,6 @@ $time_start = strtotime($dates[0]);
 $date_start = date('Y-m-d',$time_start);
 
 echo $date_start;
-// 2003-10-16
 
 $time_end = strtotime($dates[1]);
 

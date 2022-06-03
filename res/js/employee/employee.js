@@ -74,7 +74,7 @@ errorInfo.textContent = `Dostępne dni urlopu: ${workerData[7]}`;
 
 Insert_Data();
 
-//Ladowanie kolegów z pracy przy wybieraniu wniosku urlopowego
+//Ladowanie kolegów z pracy do modala przy wybieraniu wniosku urlopowego
 
 const options = document.getElementById("deputy");
 
@@ -93,7 +93,7 @@ const minusButton = document.querySelector(".minus");
 let first = 0;
 let second = 10;
 const moveOn = (e) => {
-  console.log(e.target.innerHTML);
+ 
   if (e.target.innerHTML === "Starsze") {
     first = first + 10;
     second = second + 10;

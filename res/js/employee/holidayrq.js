@@ -1,4 +1,5 @@
 'use strict'
+// ajax celem złożenia wniosku przez pracownika
 
 const button = document.getElementById('submit-request');
 

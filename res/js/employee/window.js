@@ -21,7 +21,7 @@ windowsClose.forEach((btn) =>
   )
 );
 
-//-------- datapicker-------------
+//-------- datapicker (kalendarz pzy wniosku)-------------
 
 $("#daterangepicker").daterangepicker(
   {
@@ -65,10 +65,10 @@ $("#daterangepicker").daterangepicker(
   
 );
 
-
-
+// walidacja wniosku - czy X może wziąć urlop
 
 function out(start, end, label){
+  // liczenie dni 
   result = countDays(start, end);
   if(result > workerData[7]){
     errorInfo.textContent = `Błąd! Masz tylko ${workerData[7]} dni urlopu. Zaznacz inny zakres dat!`;
@@ -86,8 +86,11 @@ function out(start, end, label){
   }
 };
 
-// const days = [0,1,2,3,4,5,6];
 
+// obliczanie czy w zakresie wybranych dat są soboty i niedziele
+// źródło: https://stackoverflow.com/questions/25562173/calculate-number-of-specific-weekdays-between-dates 
+
+// const days = [0,1,2,3,4,5,6];
 // 'Monday', 'Tuesday', 'Wednesday', 'Thrusday', 'Friday', 'Saturday', 'Sunday'
 
 function countCertainDays( days, d0, d1 ) {
@@ -109,7 +112,6 @@ function countDays(start, end){
 
   let daysResult = (daysTotal - weekdays);
 
-  console.log(daysResult + ' dni urlopu');
 
  
   return(daysResult);

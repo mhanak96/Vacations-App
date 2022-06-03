@@ -1,5 +1,5 @@
 <?php
-//  odrzucenie wniosku pracownika
+//  odrzucenie wniosku pracownika zwrot wnioskującemu zabranych dni przy składaniu wniosku 
  
 $connection = mysqli_connect('localhost','root','','application');
 

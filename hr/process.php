@@ -1,5 +1,5 @@
 <?php
-  
+  // dodanie nowego pracownika do bazy pracowników 
 $first_name = $_POST['first_name'];
 $second_name = $_POST['second_name'];
 $email = $_POST['email'];

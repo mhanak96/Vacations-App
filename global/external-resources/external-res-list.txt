@@ -1,0 +1,4 @@
+1. Data range picker master - biblioteka wykorzystana do wybierania zakresów dat, https://www.daterangepicker.com/
+2. fontawesome - wykorzystany do ikonek, https://fontawesome.com/
+3. fonttello - wykorzystany do ikonek, https://fontello.com/
+4. jquery - wykorzystana przy ajaxie, https://jquery.com/
