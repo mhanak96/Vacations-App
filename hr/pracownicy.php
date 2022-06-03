@@ -29,13 +29,13 @@ if (!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != 
 
 <body>
   <div id="nav">
-    <div id="logo"><img src="../employee/img/logo.png"></div>
+  <div id="logo"><img src="../img/logo.png"></div>
     <div class="name">Baza pracowników</div>
     <div class="nav-btn">
       <button class="btn1">
         <a class="nav-link" href="hr.php">Panel główny</a>
       </button>
-      <form action="../logout.php" method="post">
+      <form action="../main/logout.php" method="post">
         <a href="../index.php"><button class="btn1">Wyloguj</button></a>
       </form>
     </div>
@@ -165,8 +165,8 @@ if (!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != 
     var table_crud = <?php echo json_encode($table_crud); ?>;
   </script>
   <script type="text/javascript" src="../global/js/jquery.js"></script>
-  <script type="text/javascript" src="js/window2.js"></script>
-  <script type="text/javascript" src="crud.js"></script>
+  <script type="text/javascript" src="../js/hr/window2.js"></script>
+  <script type="text/javascript" src="../js/hr/crud.js"></script>
 </body>
 
 </html>

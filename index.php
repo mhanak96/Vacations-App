@@ -17,7 +17,7 @@
 
 	<div class='logo'>VacApp<img src="img/logo.png"></div>
 	<div id="container">
-		<form class="login-form" id="form-login" method="post" action="assigner.php">
+		<form class="login-form" id="form-login" method="post" action="main/assigner.php">
 			<i class="fa-solid fa-user avatar"></i>
 			<input type="text" name="email" id="email" placeholder="login" onfocus="this.placeholder=''" onblur="this.placeholder='login'">
 			<input type="password" name="password" id="password" placeholder="hasło" onfocus="this.placeholder=''" onblur="this.placeholder='hasło'">
@@ -30,7 +30,7 @@
 	</div>
 
 	<script type="text/javascript" src="global/js/jquery.js"></script>
-	<script type="text/javascript" src="validation.js"></script>
+	<script type="text/javascript" src="js/global/validation.js"></script>
 </body>
 
 </html>

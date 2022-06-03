@@ -25,18 +25,16 @@ if (!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != 
 
     <link rel="stylesheet" href="" type="text/css" />
     <link rel="stylesheet" href="../css/global/status.css" type="text/css" />
-    <link rel="stylesheet" href="fontello-2881fecc/css/tw.css">
+    <link rel="stylesheet" href="../global/external-resources/fontello-2881fecc/css/tw.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;900&display=swap" rel="stylesheet">
 
-
-    <link rel="stylesheet" type="text/css" media="all" href="daterangepicker-master/daterangepicker.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="../global/external-resources/daterangepicker-master/daterangepicker.css" />
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
-    <script type="text/javascript" src="daterangepicker-master/daterangepicker.js"></script>
-
+    <script type="text/javascript" src="../global/external-resources/daterangepicker-master/daterangepicker.js"></script>
 </head>
 
 <body>
@@ -45,7 +43,7 @@ if (!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != 
         <div id="nav">
             <div id="logo"><img src="../img/logo.png"></div>
             <div id="welcome" class='hi'>Witaj ${firstName}</div>
-            <form action="../logout.php" method="post">
+            <form action="../main/logout.php" method="post">
                 <a href="../index.php"><button class="btn1" id="btn-logout">Wyloguj</button></a>
             </form>
         </div>
@@ -123,7 +121,7 @@ if (!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != 
                         <h1>Nowy wniosek urlopowy</h1>
                     </div>
                     <!-- FORM-->
-                    <form class="request-form" action="../holiday-request.php" method="post">
+                    <form class="request-form" action="../main/holiday-request.php" method="post">
                         <div class="inputs">
                             <label>Typ urlopu:</label>
                             <select name="vacation" id="vacation">
@@ -292,18 +290,9 @@ if (!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != 
 
 
 
-    /*$toTable = mysqli_fetch_array($select, MYSQLI_NUM);
-     $solutions = array();
-
-    while($row = mysqli_fetch_array($select, MYSQLI_NUM)) {
-      $solutions[] = $row['solutions'];
-    }*/
-
-
-
     ?>
 
-    <script src="window.js"></script>
+    <script type="text/javascript" src="../js/manager/window.js"></script>
     <script type="text/javascript">
         var pausecontent = <?php echo json_encode($_SESSION['session_data']); ?>;
         var table = <?php echo json_encode($vac_history); ?>;
@@ -313,10 +302,10 @@ if (!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != 
         var collegues = <?php echo json_encode($collegues_join); ?>;
     </script>
 
-    <script type="text/javascript" src="kierownik.js"></script>
+    <script type="text/javascript" src="../js/manager/kierownik.js"></script>
     <script type="text/javascript" src="../global/js/logout.js"></script>
     <script type="text/javascript" src="../global/js/jquery.js"></script>
-    <script type="text/javascript" src="managerquery.js"></script>
+    <script type="text/javascript" src="../js/manager/managerquery.js"></script>
 
 </body>
 

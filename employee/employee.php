@@ -42,7 +42,7 @@ if (!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != 
             <div id="nav">
                 <div id="logo"><img src="../img/logo.png"></div>
                 <div id="welcome" class='name'>Witaj ${firstName}</div>
-                <form action="../logout.php" method="post">
+                <form action="../main/logout.php" method="post">
                     <a href="../index.php"><button class="btn1" id="btn-logout">Wyloguj</button></a>
                 </form>
             </div>
@@ -151,7 +151,7 @@ if (!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != 
 
     <script src="../global/external-resources/scrolUp.js"></script>
     <script src="../global/external-resources/btn-anim.js"></script>
-    <script src="window.js"></script>
+    <script type="text/javascript" src="../js/employee/window.js"></script>
 
     <?php
 
@@ -201,7 +201,7 @@ if (!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != 
 
     <script type="text/javascript" src="../global/js/jquery.js"></script>
     <script type="text/javascript" src="../global/js/logout.js"></script>
-    <script type="text/javascript" src="holidayrq.js"></script>
+    <script type="text/javascript" src="../js/employee/holidayrq.js"></script>
     <script type="text/javascript" src="../js/employee/employee.js"></script>
 
 </body>

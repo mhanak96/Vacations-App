@@ -33,7 +33,7 @@ if (!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != 
     <div id="logo"><img src="../img/logo.png"></div>
       <div class='name' id="welcome">Witaj ${firstName}</div>
       <div class="nav-btn">
-        <form action="../logout.php" method="post">
+        <form action="../main/logout.php" method="post">
           <a href="../index.php"><button class="btn1" id="btn-logout">Wyloguj</button></a>
         </form>
       </div>
@@ -117,7 +117,7 @@ if (!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != 
       <div class="modal-header">
         <h1>Nowy wniosek urlopowy</h1>
       </div>
-      <form class="request-form" action="../holiday-request.php" method="post">
+      <form class="request-form" action="../main/holiday-request.php" method="post">
         <div class="inputs">
           <label>Typ urlopu:</label>
           <select name="vacation" id="vacation">
@@ -216,6 +216,8 @@ if (!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != 
 
   <script type="text/javascript" src="../global/js/jquery.js"></script>
 
+  
+
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
   <script type="text/javascript" src="../global/external-resources/daterangepicker-master/daterangepicker.js"></script>
@@ -249,10 +251,10 @@ if (!isset($_SESSION['session_data']['0']) || $_SESSION['session_data']['5'] != 
     var collegues = <?php echo json_encode($collegues_join); ?>;
   </script>
 
-  <script src="js/windowhr.js"></script>
-  <script type="text/javascript" src="js/hrscript.js"></script>
+  <script src="../js/hr/windowhr.js"></script>
+  <script type="text/javascript" src="../js/hr/hrscript.js"></script>
   <script type="text/javascript" src="../global/js/logout.js"></script>
-  <script type="text/javascript" src="js/holidayrqhr.js"></script>
+  <script type="text/javascript" src="../js/hr/holidayrqhr.js"></script>
 
 </body>
 
