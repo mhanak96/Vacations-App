@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 08 Maj 2022, 16:31
+-- Czas generowania: 03 Cze 2022, 21:24
 -- Wersja serwera: 10.4.21-MariaDB
 -- Wersja PHP: 7.3.31
 
@@ -165,7 +165,36 @@ INSERT INTO `vacation_log` (`application_id`, `id`, `user`, `type`, `start_date`
 (174, 1, 'Janusz Kowalski', 'zwykly', '2022-02-15', '2022-02-15', 'Arkadiusz', '', 'Oczekuje na akceptacje HR'),
 (175, 14, 'Jan Paragraf', 'zwykly', '2022-02-07', '2022-02-08', '', '', 'Oczekuje na akceptacje HR'),
 (176, 16, 'Grażyna Bonczyk', 'zwykly', '2022-02-07', '2022-02-07', '', '', 'Oczekuje na akceptacje'),
-(177, 16, 'Grażyna Bonczyk', 'zwykly', '2022-02-22', '2022-02-22', '', '', 'Oczekuje na akceptacje');
+(177, 16, 'Grażyna Bonczyk', 'zwykly', '2022-02-22', '2022-02-22', '', '', 'Oczekuje na akceptacje'),
+(178, 2, 'Arkadiusz Nowak', 'zwykly', '2022-02-01', '2022-02-01', 'Janusz', '', 'Odrzucono przez Kierownika'),
+(179, 2, 'Arkadiusz Nowak', 'zwykly', '2022-02-01', '2022-02-01', 'Janusz', '', 'Odrzucono przez Kierownika'),
+(180, 2, 'Arkadiusz Nowak', 'zadanie', '2022-04-25', '2022-04-25', 'Janina', '', 'Oczekuje na akceptacje HR'),
+(181, 2, 'Arkadiusz Nowak', 'zwykly', '2022-02-14', '2022-02-15', 'Janusz', '', 'Odrzucono przez Kierownika'),
+(182, 2, 'Arkadiusz Nowak', 'zwykly', '2022-02-08', '2022-02-08', 'Janusz', '', 'Odrzucono przez HR'),
+(183, 2, 'Arkadiusz Nowak', 'zwykly', '2022-02-09', '2022-02-09', 'Janusz', '', 'Odrzucono przez Kierownika'),
+(184, 2, 'Arkadiusz Nowak', 'zwykly', '2022-02-07', '2022-02-07', 'Janusz', '', 'Odrzucono przez Kierownika'),
+(185, 2, 'Arkadiusz Nowak', 'zwykly', '2022-02-21', '2022-02-21', 'Janina', '', 'Zaakceptowane'),
+(186, 1, 'Janusz Kowalski', 'zwykly', '2022-04-18', '2022-04-18', 'Arkadiusz', '', 'Zaakceptowane'),
+(187, 1, 'Janusz Kowalski', 'zwykly', '2022-03-15', '2022-03-15', 'Janina', '', 'Odrzucono przez HR'),
+(188, 3, 'Danuta Sprytna', 'zwykly', '2022-05-10', '2022-05-10', 'Sylwia', '', 'Odrzucono przez HR'),
+(189, 3, 'Danuta Sprytna', 'zadanie', '2022-05-23', '2022-05-23', 'Sylwia', '', 'Zaakceptowane'),
+(190, 2, 'Arkadiusz Nowak', 'zwykly', '2022-02-01', '2022-02-01', 'Janusz', '', 'Zaakceptowane'),
+(191, 2, 'Arkadiusz Nowak', 'zwykly', '2022-02-14', '2022-02-14', 'Janusz', '', 'Zaakceptowane'),
+(192, 1, 'Janusz Kowalski', 'zwykly', '2022-02-01', '2022-02-01', 'Arkadiusz', '', 'Odrzucono przez HR'),
+(193, 3, 'Danuta Sprytna', 'zwykly', '2022-02-08', '2022-02-08', 'Sylwia', '', 'Oczekuje na akceptacje HR'),
+(194, 1, 'Janusz Kowalski', 'zwykly', '2022-02-01', '2022-02-01', 'Arkadiusz', '', 'Odrzucono przez HR'),
+(195, 1, 'Janusz Kowalski', 'zwykly', '2022-02-01', '2022-02-03', 'Arkadiusz', '', 'Zaakceptowane'),
+(196, 1, 'Janusz Kowalski', 'zwykly', '2022-02-07', '2022-02-08', 'Janina', '', 'Odrzucono przez HR'),
+(197, 3, 'Danuta Sprytna', 'zwykly', '2022-02-22', '2022-02-23', 'Sylwia', '', 'Zaakceptowane'),
+(198, 3, 'Danuta Sprytna', 'zwykly', '2022-02-25', '2022-02-28', 'Sylwia', '', 'Odrzucono przez HR'),
+(199, 2, 'Arkadiusz Nowak', 'zwykly', '2022-02-08', '2022-02-09', 'Janusz', '', 'Odrzucono przez Kierownika'),
+(200, 2, 'Arkadiusz Nowak', 'zwykly', '2022-02-07', '2022-02-07', 'Janusz', '', 'Zaakceptowane'),
+(201, 2, 'Arkadiusz Nowak', 'zwykly', '2022-02-01', '2022-02-01', 'Janusz', '', 'Odrzucono przez HR'),
+(202, 2, 'Arkadiusz Nowak', 'zwykly', '2022-02-15', '2022-02-15', 'Janusz', '', 'Odrzucono przez Kierownika'),
+(203, 1, 'Janusz Kowalski', 'zwykly', '2022-02-08', '2022-02-09', 'Arkadiusz', '', 'Zaakceptowane'),
+(204, 1, 'Janusz Kowalski', 'zwykly', '2022-02-01', '2022-02-02', 'Arkadiusz', '', 'Odrzucono przez HR'),
+(205, 2, 'Arkadiusz Nowak', 'zwykly', '2022-05-09', '2022-05-09', 'Janusz', '', 'Odrzucono przez Kierownika'),
+(206, 2, 'Arkadiusz Nowak', 'zwykly', '2022-02-08', '2022-02-08', 'Janusz', '', 'Odrzucono przez HR');
 
 --
 -- Indeksy dla zrzutów tabel
@@ -185,7 +214,7 @@ ALTER TABLE `vacation_log`
 -- AUTO_INCREMENT dla tabeli `vacation_log`
 --
 ALTER TABLE `vacation_log`
-  MODIFY `application_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=178;
+  MODIFY `application_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=207;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

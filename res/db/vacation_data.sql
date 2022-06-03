@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 08 Maj 2022, 16:30
+-- Czas generowania: 03 Cze 2022, 21:24
 -- Wersja serwera: 10.4.21-MariaDB
 -- Wersja PHP: 7.3.31
 
@@ -45,9 +45,9 @@ CREATE TABLE `vacation_data` (
 --
 
 INSERT INTO `vacation_data` (`id`, `first_name`, `second_name`, `email`, `password`, `role`, `departament`, `vacation_total`, `vacation_on`, `job_title`) VALUES
-(1, 'Janusz', 'Kowalski', 'jkowalski@wp.pl', 'abc', 'Kierownik', 'Produkcja', 4, 12, 'Dyrektor Produkcji'),
-(2, 'Arkadiusz', 'Nowak', 'arkadiusznowak@wp.pl', 'def', 'Pracownik', 'Produkcja', 13, 68, 'specjalista ds. produkcji'),
-(3, 'Danuta', 'Sprytna', 'dsprytna@wp.pl', 'ghi', 'HR', 'HR', 2, 37, 'Kierownik kadr'),
+(1, 'Janusz', 'Kowalski', 'jkowalski@wp.pl', 'abc', 'Kierownik', 'Produkcja', 16, 11, 'Dyrektor Produkcji'),
+(2, 'Arkadiusz', 'Nowak', 'arkadiusznowak@wp.pl', 'def', 'Pracownik', 'Produkcja', 7, 86, 'specjalista ds. produkcji'),
+(3, 'Danuta', 'Sprytna', 'dsprytna@wp.pl', 'ghi', 'HR', 'HR', 20, 8, 'Kierownik kadr'),
 (4, 'Janina', 'Bogucz', 'jbogucz@wp.pl', '123', 'Pracownik', 'Produkcja', 23, 2, 'Starszy referent'),
 (5, 'Sylwia', 'Nowak', 'snowak@wp.pl', 'jkl', 'HR', 'HR', 14, 8, 'specjalista ds. Kadr'),
 (13, 'Hernyk', 'Koszel', 'popop@wp.pl', 'def', 'Pracownik', 'Produkcja', 20, 30, 'opop'),
