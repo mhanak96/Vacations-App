@@ -60,55 +60,45 @@ $("#daterangepicker").daterangepicker(
   },
   function (start, end, label) {
     out(start, end, label);
-   
   }
 );
 
-
-
-
-function out(start, end, label){
+function out(start, end, label) {
   result = countDays(start, end);
-  if(result > pausecontent[7]){
+  if (result > pausecontent[7]) {
     errorInfo.textContent = `Błąd! Masz tylko ${pausecontent[7]} dni urlopu. Zaznacz inny zakres dat!`;
 
-  
-    document.getElementById("submit-request").setAttribute('disabled', true);
-  }
-  else
-  {
-    correctResult = pausecontent[7] - result; 
+    document.getElementById("submit-request").setAttribute("disabled", true);
+  } else {
+    correctResult = pausecontent[7] - result;
+    /// pausecontent jest w kierownik PHP pobera dane
 
-  
-    errorInfo.textContent = `Dostępne dni urlopu po złożeniu wniosku: ${correctResult}`;   
+    errorInfo.textContent = `Dostępne dni urlopu po złożeniu wniosku: ${correctResult}`;
     document.getElementById("submit-request").removeAttribute("disabled");
   }
-};
+}
 
 // obliczenie czy w zakresie dni znajdują się soboty i niedziele: https://stackoverflow.com/questions/25562173/calculate-number-of-specific-weekdays-between-dates
 
-
-function countCertainDays( days, d0, d1 ) {
-  var ndays = 1 + Math.round((d1-d0)/(24*3600*1000));
-  var sum = function(a,b) {
-    return a + Math.floor( ( ndays + (d0.getDay()+6-b) % 7 ) / 7 ); };
-  return days.reduce(sum,0);
+function countCertainDays(days, d0, d1) {
+  var ndays = 1 + Math.round((d1 - d0) / (24 * 3600 * 1000));
+  var sum = function (a, b) {
+    return a + Math.floor((ndays + ((d0.getDay() + 6 - b) % 7)) / 7);
+  };
+  return days.reduce(sum, 0);
 }
 
-function countDays(start, end){
+function countDays(start, end) {
   let vacationStart = new Date(start);
-  let vacationEnd = new Date(end);  
+  let vacationEnd = new Date(end);
 
-  let weekdays = countCertainDays([0,6], vacationStart, vacationEnd)
+  let weekdays = countCertainDays([0, 6], vacationStart, vacationEnd);
 
   let calcDays = vacationEnd.getTime() - vacationStart.getTime();
 
   var daysTotal = Math.ceil(calcDays / (1000 * 3600 * 24));
 
-  let daysResult = (daysTotal - weekdays);
+  let daysResult = daysTotal - weekdays;
 
-
- 
-  return(daysResult);
-
+  return daysResult;
 }

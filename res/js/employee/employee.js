@@ -1,4 +1,4 @@
-['use strict']
+["use strict"];
 
 //deklracje zmiennych
 const welcome = document.getElementById("welcome");
@@ -8,15 +8,18 @@ const errorInfo = document.getElementById("error");
 const position = document.getElementById("panel-position");
 
 //ukrycie hasła
+/* Hiding the password. */
 workerData[4] = "***";
 
 //DOM paneli
+/* Setting the welcome.textContent to the workerData[1] value. */
 welcome.textContent = `Witaj ${workerData[1]}!`;
 panelName.textContent = `${workerData[1]} ${workerData[2]}`;
 panelVacation.textContent = `Pozostało ${workerData[7]} dni urlopu`;
 position.textContent = `${workerData[9]}`;
 
 // Aktualizacja danych po złożeniu wniosku
+
 if (sessionStorage.getItem("tempCorrectResult") == null) {
   panelVacation.textContent = `Pozostało ${workerData[7]} dni do wykorzystania`;
 } else {
@@ -93,7 +96,6 @@ const minusButton = document.querySelector(".minus");
 let first = 0;
 let second = 10;
 const moveOn = (e) => {
- 
   if (e.target.innerHTML === "Starsze") {
     first = first + 10;
     second = second + 10;
@@ -102,6 +104,7 @@ const moveOn = (e) => {
     second = second - 10;
   }
 
+  // nie powzwala tabeli pojsc za daleko
   if (!(table.length >= second)) {
     second = table.length;
     first = table.length - 10;
